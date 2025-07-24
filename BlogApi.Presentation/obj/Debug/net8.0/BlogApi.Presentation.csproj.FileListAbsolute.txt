@@ -1,0 +1,17 @@
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\bin\Debug\net8.0\BlogApi.Presentation.deps.json
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\bin\Debug\net8.0\BlogApi.Presentation.dll
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\bin\Debug\net8.0\BlogApi.Presentation.pdb
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\obj\Debug\net8.0\BlogApi.Presentation.csproj.AssemblyReference.cache
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\obj\Debug\net8.0\BlogApi.Presentation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\obj\Debug\net8.0\BlogApi.Presentation.AssemblyInfoInputs.cache
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\obj\Debug\net8.0\BlogApi.Presentation.AssemblyInfo.cs
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\obj\Debug\net8.0\BlogApi.Presentation.csproj.CoreCompileInputs.cache
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\obj\Debug\net8.0\BlogApi.Presentation.dll
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\obj\Debug\net8.0\refint\BlogApi.Presentation.dll
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\obj\Debug\net8.0\BlogApi.Presentation.pdb
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\obj\Debug\net8.0\ref\BlogApi.Presentation.dll
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\bin\Debug\net8.0\Service.Contracts.dll
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\bin\Debug\net8.0\Service.Contracts.pdb
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\obj\Debug\net8.0\BlogApi..21FD29BC.Up2Date
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\bin\Debug\net8.0\Shared.dll
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\bin\Debug\net8.0\Shared.pdb
