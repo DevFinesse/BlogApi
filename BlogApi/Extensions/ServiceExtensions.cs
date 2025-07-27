@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using LoggerService;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Repository;
 using Service;
 using Service.Contracts;
@@ -34,6 +35,17 @@ namespace BlogApi.Extensions
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<RepositoryContext>(opts =>
                 opts.UseNpgsql(configuration.GetConnectionString("sqlConnection")));
+
+        public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
+            builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));
+
+        public static void ConfigureSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1", new OpenApiInfo { Title = "Isaacman Blog Api", Version = "v1" });
+            });
+        }
 
     }
 }

@@ -24,12 +24,10 @@ namespace BlogApi.Migrations
 
             modelBuilder.Entity("Entities.Models.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("uuid")
                         .HasColumnName("CategoryId");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -43,24 +41,22 @@ namespace BlogApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = new Guid("f67c36e4-8428-4570-858b-6c8b7edad5c3"),
                             Name = "Category One"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = new Guid("21c77926-23b5-42ce-96ea-d389e08faab8"),
                             Name = "Category 2"
                         });
                 });
 
             modelBuilder.Entity("Entities.Models.Comment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("uuid")
                         .HasColumnName("CommentId");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -72,8 +68,8 @@ namespace BlogApi.Migrations
                     b.Property<DateTimeOffset?>("LastUpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("ParentCommentId")
-                        .HasColumnType("integer");
+                    b.Property<Guid?>("ParentCommentId")
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("PostId")
                         .HasColumnType("uuid");
@@ -89,23 +85,23 @@ namespace BlogApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = new Guid("0bd63e36-ff8e-409f-84a6-ffba66186e48"),
                             Content = "Comment one",
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 7, 23, 9, 29, 1, 333, DateTimeKind.Unspecified).AddTicks(7017), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 7, 26, 12, 6, 54, 199, DateTimeKind.Unspecified).AddTicks(73), new TimeSpan(0, 0, 0, 0, 0)),
                             PostId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870")
                         },
                         new
                         {
-                            Id = 2,
+                            Id = new Guid("8faac1fb-eadc-4b12-9f48-ff9632fea906"),
                             Content = "Comment Two",
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 7, 23, 9, 29, 1, 333, DateTimeKind.Unspecified).AddTicks(8027), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 7, 26, 12, 6, 54, 199, DateTimeKind.Unspecified).AddTicks(1134), new TimeSpan(0, 0, 0, 0, 0)),
                             PostId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3")
                         },
                         new
                         {
-                            Id = 3,
+                            Id = new Guid("8e330783-ccb4-47be-883d-dad77dac71c1"),
                             Content = "Comment Three",
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 7, 23, 9, 29, 1, 333, DateTimeKind.Unspecified).AddTicks(8032), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 7, 26, 12, 6, 54, 199, DateTimeKind.Unspecified).AddTicks(1139), new TimeSpan(0, 0, 0, 0, 0)),
                             PostId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3")
                         });
                 });
@@ -117,8 +113,8 @@ namespace BlogApi.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("PostId");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -127,16 +123,16 @@ namespace BlogApi.Migrations
                     b.Property<DateTimeOffset?>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<bool>("IsPublished")
+                        .HasColumnType("boolean");
+
                     b.Property<DateTimeOffset?>("LastUpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Slug")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -147,27 +143,32 @@ namespace BlogApi.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("Slug")
+                        .IsUnique();
+
                     b.ToTable("Posts");
 
                     b.HasData(
                         new
                         {
                             Id = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
-                            CategoryId = 2,
+                            CategoryId = new Guid("21c77926-23b5-42ce-96ea-d389e08faab8"),
                             Content = "Post one Contents",
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 7, 23, 9, 29, 1, 332, DateTimeKind.Unspecified).AddTicks(1872), new TimeSpan(0, 0, 0, 0, 0)),
-                            Slug = "Post-One-Title",
-                            Status = "Published",
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 7, 26, 12, 6, 54, 197, DateTimeKind.Unspecified).AddTicks(8528), new TimeSpan(0, 0, 0, 0, 0)),
+                            IsPublished = false,
+                            LastUpdatedAt = new DateTimeOffset(new DateTime(2025, 7, 26, 12, 6, 54, 197, DateTimeKind.Unspecified).AddTicks(8890), new TimeSpan(0, 0, 0, 0, 0)),
+                            Slug = "post-one-title",
                             Title = "Post One Title"
                         },
                         new
                         {
                             Id = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
-                            CategoryId = 1,
+                            CategoryId = new Guid("f67c36e4-8428-4570-858b-6c8b7edad5c3"),
                             Content = "Post Two Contents",
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 7, 23, 9, 29, 1, 332, DateTimeKind.Unspecified).AddTicks(4493), new TimeSpan(0, 0, 0, 0, 0)),
-                            Slug = "Post-Two-Title",
-                            Status = "Draft",
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 7, 26, 12, 6, 54, 198, DateTimeKind.Unspecified).AddTicks(698), new TimeSpan(0, 0, 0, 0, 0)),
+                            IsPublished = true,
+                            LastUpdatedAt = new DateTimeOffset(new DateTime(2025, 7, 26, 12, 6, 54, 198, DateTimeKind.Unspecified).AddTicks(699), new TimeSpan(0, 0, 0, 0, 0)),
+                            Slug = "post-two-title",
                             Title = "Post Two Title"
                         });
                 });

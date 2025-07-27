@@ -1,6 +1,5 @@
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\nlog.config
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\appsettings.json
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\BlogApi.staticwebassets.endpoints.json
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\BlogApi.exe
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\BlogApi.deps.json
@@ -177,3 +176,4 @@ C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\Service.pdb
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\Service.Contracts.pdb
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\Shared.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\Shared.pdb
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\appsettings.json

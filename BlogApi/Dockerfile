@@ -4,8 +4,8 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER $APP_UID
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 5000
+EXPOSE 5001
 
 
 # This stage is used to build the service project
@@ -13,6 +13,14 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["BlogApi/BlogApi.csproj", "BlogApi/"]
+COPY ["BlogApi.Presentation/BlogApi.Presentation.csproj", "BlogApi.Presentation/"]
+COPY ["Service.Contracts/Service.Contracts.csproj", "Service.Contracts/"]
+COPY ["Shared/Shared.csproj", "Shared/"]
+COPY ["LoggerService/LoggerService.csproj", "LoggerService/"]
+COPY ["Contracts/Contracts.csproj", "Contracts/"]
+COPY ["Entities/Entities.csproj", "Entities/"]
+COPY ["Repository/Repository.csproj", "Repository/"]
+COPY ["Service/Service.csproj", "Service/"]
 RUN dotnet restore "./BlogApi/BlogApi.csproj"
 COPY . .
 WORKDIR "/src/BlogApi"

@@ -9,6 +9,9 @@ namespace BlogApi
         public MappingProfile() 
         { 
             CreateMap<Category, CategoryDto>();
+            CreateMap<Comment, CommentDto>();
+            CreateMap<Post, PostDto>();
+            CreateMap<PostCreationDto, Post>().ForMember(dest => dest.Slug, opt => opt.Ignore());
         }
     }
 }
