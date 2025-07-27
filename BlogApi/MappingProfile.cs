@@ -12,6 +12,7 @@ namespace BlogApi
             CreateMap<Comment, CommentDto>();
             CreateMap<Post, PostDto>();
             CreateMap<PostCreationDto, Post>().ForMember(dest => dest.Slug, opt => opt.Ignore());
+            CreateMap<CommentCreationDto, Comment>();
         }
     }
 }

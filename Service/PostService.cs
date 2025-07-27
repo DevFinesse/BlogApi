@@ -47,7 +47,6 @@ namespace Service
         {
             var postEntity = _mapper.Map<Post>(post);
             postEntity.Slug = await _slugService.GenerateUniqueSlug(post.Title, async s => await _repository.PostRepository.SlugExistsAsync(s));
-            Console.WriteLine(postEntity.Slug);
              _repository.PostRepository.CreatePost(postEntity);
              _repository.Save();
 

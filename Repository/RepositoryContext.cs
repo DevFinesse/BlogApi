@@ -25,13 +25,17 @@ namespace Repository
             modelBuilder.Entity<Comment>()
                 .HasOne(c => c.Post)
                 .WithMany(p => p.Comments)
-                .HasForeignKey(c => c.PostId);
+                .HasForeignKey(c => c.PostId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Comment>()
                 .HasIndex(c => c.PostId);
 
             modelBuilder.Entity<Comment>()
                 .HasIndex(c => c.ParentCommentId);
+
+            modelBuilder.Entity<Comment>()
+               .HasIndex(c => c.CreatedAt);
 
             modelBuilder.Entity<Post>()
                 .HasIndex(p => p.Slug)

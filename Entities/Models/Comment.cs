@@ -12,11 +12,11 @@ namespace Entities.Models
 
         [Required(ErrorMessage ="Content cannot be empty")]
         public string? Content { get; set; }
-        public Guid? ParentCommentId { get; set; }
-        public Comment? ParentComment { get; set; } //navigation to comment
-        public ICollection<Comment> Replies { get; set; } = []; //children comment
         public DateTimeOffset? CreatedAt { get; set; } = DateTimeOffset.UtcNow;
         public DateTimeOffset? LastUpdatedAt { get; set; }
+        public Guid? ParentCommentId { get; set; } = Guid.Empty;
+        public Comment? ParentComment { get; set; } //navigation to comment
+        public ICollection<Comment>? Replies { get; set; } //children comment
 
         [ForeignKey(nameof(Post))]
         public Guid PostId { get; set; }

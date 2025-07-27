@@ -41,7 +41,7 @@ namespace BlogApi.Presentation.Controllers
         public async Task<IActionResult> CreatePost([FromBody] PostCreationDto post)
         {
             if (post == null)
-                return BadRequest("Post cannot be empty");
+            return BadRequest("Post cannot be empty");
             var createdPost = await _service.PostService.CreatePostAsync(post);
             var slug = _service.PostService.GetPost(createdPost.Id, trackChanges: false);
             return CreatedAtAction(nameof(GetPostBySlug), new { slug = slug.Slug }, post);

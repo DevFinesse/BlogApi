@@ -1,4 +1,5 @@
 ﻿namespace Shared.DataTransferObjects
 {
-    public record PostCreationDto(string Title, string Content, bool IsPublished, Guid CategoryId);
+    public record PostCreationDto(string Title, string Content, bool IsPublished, Guid CategoryId,
+        IEnumerable<CommentCreationDto> Comments);
 }
