@@ -7,7 +7,7 @@ namespace Entities.Models
     public class Category
     {
         [Column("CategoryId")]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage ="Name is a required field")]
         [MaxLength(20,ErrorMessage ="Maximum length for a category is 20 characters.")]

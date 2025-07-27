@@ -8,9 +8,9 @@ namespace Contracts
 {
     public interface IRepositoryManager
     {
-        IPostRepository Post { get; }
-        ICommentRepository Comment { get; }
-        ICategoryRepository Category { get; }
+        IPostRepository PostRepository { get; }
+        ICommentRepository CommentRepository { get; }
+        ICategoryRepository CategoryRepository { get; }
 
         void Save();
     }

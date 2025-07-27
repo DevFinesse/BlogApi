@@ -33,6 +33,15 @@ namespace Repository
             modelBuilder.Entity<Comment>()
                 .HasIndex(c => c.ParentCommentId);
 
+            modelBuilder.Entity<Post>()
+                .HasIndex(p => p.Slug)
+                .IsUnique();
+
+            modelBuilder.Entity<Post>()
+                .Property(p => p.Slug)
+                .IsRequired()
+                .HasMaxLength(200);
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

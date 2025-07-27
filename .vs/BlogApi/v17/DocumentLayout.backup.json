@@ -3,20 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{63D9FCBB-292A-4728-BFE2-59ADE7E55402}|Service\\Service.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\service\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63D9FCBB-292A-4728-BFE2-59ADE7E55402}|Service\\Service.csproj|solutionrelative:service\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FD90F23-0C9E-4FEC-ABD6-E17B60636D35}|BlogApi\\BlogApi.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\blogapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FD90F23-0C9E-4FEC-ABD6-E17B60636D35}|BlogApi\\BlogApi.csproj|solutionrelative:blogapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2844355E-06C6-4208-BC48-FE2987095328}|Shared\\Shared.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\shared\\datatransferobjects\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2844355E-06C6-4208-BC48-FE2987095328}|Shared\\Shared.csproj|solutionrelative:shared\\datatransferobjects\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FD90F23-0C9E-4FEC-ABD6-E17B60636D35}|BlogApi\\BlogApi.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\blogapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6FD90F23-0C9E-4FEC-ABD6-E17B60636D35}|BlogApi\\BlogApi.csproj|solutionrelative:blogapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{108F71E0-893A-4B32-B4E9-2F14C4B4FF26}|Entities\\Entities.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\entities\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{108F71E0-893A-4B32-B4E9-2F14C4B4FF26}|Entities\\Entities.csproj|solutionrelative:entities\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FD90F23-0C9E-4FEC-ABD6-E17B60636D35}|BlogApi\\BlogApi.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\blogapi\\extensions\\migrationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FD90F23-0C9E-4FEC-ABD6-E17B60636D35}|BlogApi\\BlogApi.csproj|solutionrelative:blogapi\\extensions\\migrationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15C3BAD5-4EDF-4DB4-A087-EEB742E8D8C2}|Service.Contracts\\Service.Contracts.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\service.contracts\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15C3BAD5-4EDF-4DB4-A087-EEB742E8D8C2}|Service.Contracts\\Service.Contracts.csproj|solutionrelative:service.contracts\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FD90F23-0C9E-4FEC-ABD6-E17B60636D35}|BlogApi\\BlogApi.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\blogapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6FD90F23-0C9E-4FEC-ABD6-E17B60636D35}|BlogApi\\BlogApi.csproj|solutionrelative:blogapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{608E0A74-5F96-4760-AA82-A8744BC9D891}|Repository\\Repository.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\repository\\configuration\\postconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{608E0A74-5F96-4760-AA82-A8744BC9D891}|Repository\\Repository.csproj|solutionrelative:repository\\configuration\\postconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{108F71E0-893A-4B32-B4E9-2F14C4B4FF26}|Entities\\Entities.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\entities\\models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{108F71E0-893A-4B32-B4E9-2F14C4B4FF26}|Entities\\Entities.csproj|solutionrelative:entities\\models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F5050E8-1BC8-4F63-9377-4E9EA011D787}|BlogApi.Presentation\\BlogApi.Presentation.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\blogapi.presentation\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F5050E8-1BC8-4F63-9377-4E9EA011D787}|BlogApi.Presentation\\BlogApi.Presentation.csproj|solutionrelative:blogapi.presentation\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63D9FCBB-292A-4728-BFE2-59ADE7E55402}|Service\\Service.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\service\\postservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63D9FCBB-292A-4728-BFE2-59ADE7E55402}|Service\\Service.csproj|solutionrelative:service\\postservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15C3BAD5-4EDF-4DB4-A087-EEB742E8D8C2}|Service.Contracts\\Service.Contracts.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\service.contracts\\ipostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15C3BAD5-4EDF-4DB4-A087-EEB742E8D8C2}|Service.Contracts\\Service.Contracts.csproj|solutionrelative:service.contracts\\ipostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D092C6D8-A606-4C4D-B165-116BAD83F054}|Contracts\\Contracts.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\contracts\\ipostrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D092C6D8-A606-4C4D-B165-116BAD83F054}|Contracts\\Contracts.csproj|solutionrelative:contracts\\ipostrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{608E0A74-5F96-4760-AA82-A8744BC9D891}|Repository\\Repository.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\repository\\postrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{608E0A74-5F96-4760-AA82-A8744BC9D891}|Repository\\Repository.csproj|solutionrelative:repository\\postrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2844355E-06C6-4208-BC48-FE2987095328}|Shared\\Shared.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\shared\\datatransferobjects\\postcreationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2844355E-06C6-4208-BC48-FE2987095328}|Shared\\Shared.csproj|solutionrelative:shared\\datatransferobjects\\postcreationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2844355E-06C6-4208-BC48-FE2987095328}|Shared\\Shared.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\shared\\datatransferobjects\\postdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2844355E-06C6-4208-BC48-FE2987095328}|Shared\\Shared.csproj|solutionrelative:shared\\datatransferobjects\\postdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,60 +62,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CategoryService.cs",
-              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Service\\CategoryService.cs",
-              "RelativeDocumentMoniker": "Service\\CategoryService.cs",
-              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Service\\CategoryService.cs",
-              "RelativeToolTip": "Service\\CategoryService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T20:52:20.154Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ICategoryService.cs",
-              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Service.Contracts\\ICategoryService.cs",
-              "RelativeDocumentMoniker": "Service.Contracts\\ICategoryService.cs",
-              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Service.Contracts\\ICategoryService.cs",
-              "RelativeToolTip": "Service.Contracts\\ICategoryService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T20:51:50.137Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Category.cs",
-              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Models\\Category.cs",
-              "RelativeDocumentMoniker": "Entities\\Models\\Category.cs",
-              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Models\\Category.cs",
-              "RelativeToolTip": "Entities\\Models\\Category.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T20:49:08.765Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CategoryDto.cs",
-              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\DataTransferObjects\\CategoryDto.cs",
-              "RelativeDocumentMoniker": "Shared\\DataTransferObjects\\CategoryDto.cs",
-              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\DataTransferObjects\\CategoryDto.cs",
-              "RelativeToolTip": "Shared\\DataTransferObjects\\CategoryDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T20:47:53.124Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -95,6 +79,175 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\appsettings.json",
+              "RelativeDocumentMoniker": "BlogApi\\appsettings.json",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\appsettings.json",
+              "RelativeToolTip": "BlogApi\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-26T12:17:08.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MigrationExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\Extensions\\MigrationExtensions.cs",
+              "RelativeDocumentMoniker": "BlogApi\\Extensions\\MigrationExtensions.cs",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\Extensions\\MigrationExtensions.cs",
+              "RelativeToolTip": "BlogApi\\Extensions\\MigrationExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T12:14:16.003Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\Program.cs",
+              "RelativeDocumentMoniker": "BlogApi\\Program.cs",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\Program.cs",
+              "RelativeToolTip": "BlogApi\\Program.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T12:13:35.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "BlogApi\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\appsettings.Development.json",
+              "RelativeToolTip": "BlogApi\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-26T12:20:51.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PostsController.cs",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi.Presentation\\Controllers\\PostsController.cs",
+              "RelativeDocumentMoniker": "BlogApi.Presentation\\Controllers\\PostsController.cs",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi.Presentation\\Controllers\\PostsController.cs",
+              "RelativeToolTip": "BlogApi.Presentation\\Controllers\\PostsController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwB4AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T11:57:42.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PostService.cs",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Service\\PostService.cs",
+              "RelativeDocumentMoniker": "Service\\PostService.cs",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Service\\PostService.cs",
+              "RelativeToolTip": "Service\\PostService.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwCcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T11:55:57.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IPostService.cs",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Service.Contracts\\IPostService.cs",
+              "RelativeDocumentMoniker": "Service.Contracts\\IPostService.cs",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Service.Contracts\\IPostService.cs",
+              "RelativeToolTip": "Service.Contracts\\IPostService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T11:55:24.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PostRepository.cs",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Repository\\PostRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\PostRepository.cs",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Repository\\PostRepository.cs",
+              "RelativeToolTip": "Repository\\PostRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T11:52:26.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PostConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Repository\\Configuration\\PostConfiguration.cs",
+              "RelativeDocumentMoniker": "Repository\\Configuration\\PostConfiguration.cs",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Repository\\Configuration\\PostConfiguration.cs",
+              "RelativeToolTip": "Repository\\Configuration\\PostConfiguration.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBkAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T11:50:04.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Post.cs",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Models\\Post.cs",
+              "RelativeDocumentMoniker": "Entities\\Models\\Post.cs",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Models\\Post.cs",
+              "RelativeToolTip": "Entities\\Models\\Post.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwB0AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T06:49:29.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PostDto.cs",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\DataTransferObjects\\PostDto.cs",
+              "RelativeDocumentMoniker": "Shared\\DataTransferObjects\\PostDto.cs",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\DataTransferObjects\\PostDto.cs",
+              "RelativeToolTip": "Shared\\DataTransferObjects\\PostDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T11:47:26.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PostCreationDto.cs",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\DataTransferObjects\\PostCreationDto.cs",
+              "RelativeDocumentMoniker": "Shared\\DataTransferObjects\\PostCreationDto.cs",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\DataTransferObjects\\PostCreationDto.cs",
+              "RelativeToolTip": "Shared\\DataTransferObjects\\PostCreationDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T06:48:42.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IPostRepository.cs",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Contracts\\IPostRepository.cs",
+              "RelativeDocumentMoniker": "Contracts\\IPostRepository.cs",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Contracts\\IPostRepository.cs",
+              "RelativeToolTip": "Contracts\\IPostRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T21:43:10.181Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -17,11 +17,11 @@ namespace Repository
             _categoryRepository = new Lazy<ICategoryRepository>(() => new CategoryRepository(repositoryContext));
         }
 
-        public IPostRepository Post => _postRepository.Value;
+        public IPostRepository PostRepository => _postRepository.Value;
 
-        public ICommentRepository Comment => _commentRepository.Value;
+        public ICommentRepository CommentRepository => _commentRepository.Value;
 
-        public ICategoryRepository Category => _categoryRepository.Value;
+        public ICategoryRepository CategoryRepository => _categoryRepository.Value;
 
         public void Save() => _repositoryContext.SaveChanges();
     }

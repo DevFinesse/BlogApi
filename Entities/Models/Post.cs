@@ -12,8 +12,6 @@ namespace Entities.Models
     {
         [Column("PostId")]
         public Guid Id { get; set; }
-        //title, content, slug(url-friendly title), author ID,creation/update timestamps,categories,status(published/draft),comments collection
-        //categoryId, category
 
         [Required(ErrorMessage ="Title is required")]
         [MaxLength(50, ErrorMessage ="Title cannot be more than 50 characters")]
@@ -26,14 +24,15 @@ namespace Entities.Models
         [Required(ErrorMessage ="Slug is required")]
         public string? Slug { get; set; }
         public DateTimeOffset? CreatedAt { get; set; } = DateTimeOffset.UtcNow;
-        public DateTimeOffset? LastUpdatedAt { get; set; }
+        public DateTimeOffset? LastUpdatedAt { get; set; } = DateTimeOffset.UtcNow;
 
         [Required(ErrorMessage ="Status is required")]
-        public string? Status { get; set; }
+        public bool? IsPublished { get; set; }
 
         [ForeignKey(nameof(Category))]
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
         public Category? Category { get; set; }
+
         public ICollection<Comment>? Comments { get; set; }
     }
 }
