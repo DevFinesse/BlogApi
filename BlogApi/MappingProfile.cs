@@ -16,7 +16,7 @@ namespace BlogApi
             CreateMap<PostCreationDto, Post>().ForMember(dest => dest.Slug, opt => opt.Ignore());
             CreateMap<CommentCreationDto, Comment>();
             CreateMap<CommentUpdateDto, Comment>();
-            CreateMap<PostUpdateDto, Post>();
+            CreateMap<PostUpdateDto, Post>().ReverseMap();
         
         }
     }
