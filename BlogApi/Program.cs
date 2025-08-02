@@ -25,6 +25,8 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
     options.SuppressModelStateInvalidFilter = true;
 });
 
+builder.Services.AddScoped<ValidationFilterAttribute>();
+
 builder.Services.AddControllers(config =>
 {
     config.RespectBrowserAcceptHeader = true;
@@ -42,6 +44,8 @@ NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter() =>
 
 builder.Services.AddScoped<ISlugService, SlugService>();
 builder.Services.ConfigureSwagger();
+
+
 var app = builder.Build();
 
 var logger = app.Services.GetRequiredService<ILoggerManager>();
@@ -49,6 +53,9 @@ app.ConfigureExceptionHandler(logger);
 
 if (app.Environment.IsProduction())
     app.UseHsts();
+    app.ApplyMigrations();
+
+
 
 app.UseSwagger();
 app.UseSwaggerUI(s =>
@@ -56,8 +63,6 @@ app.UseSwaggerUI(s =>
     s.SwaggerEndpoint("/swagger/v1/swagger.json", "Isaacman API v1");
 });
 
-//if(app.Environment.IsDevelopment())
-    //app.ApplyMigrations();
 
 
 // Configure the HTTP request pipeline.

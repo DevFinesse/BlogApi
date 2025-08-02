@@ -4,6 +4,7 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER $APP_UID
 WORKDIR /app
+EXPOSE 8080
 EXPOSE 5000
 EXPOSE 5001
 
@@ -23,7 +24,7 @@ COPY ["Repository/Repository.csproj", "Repository/"]
 COPY ["Service/Service.csproj", "Service/"]
 RUN dotnet restore "./BlogApi/BlogApi.csproj"
 COPY . .
-WORKDIR "/src/BlogApi"
+WORKDIR "/src/."
 RUN dotnet build "./BlogApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
