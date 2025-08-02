@@ -18,25 +18,42 @@ namespace Repository
 
             return await query.AnyAsync();
         }
-        public IEnumerable<Post> GetAllPosts(bool trackChanges)
+        public async Task<IEnumerable<Post>> GetAllPostsAsync(bool trackChanges)
         {
-            return FindAll(trackChanges)
-                .OrderBy(p => p.CreatedAt)
-                .ToList();
+            return await FindAll(trackChanges)
+                .OrderByDescending(p => p.CreatedAt)
+                .ToListAsync();
         }
 
-        public Post GetPost(Guid postId, bool trackChanges)
+        public async Task<Post> GetPostAsync(Guid postId, bool trackChanges)
         {
-            return FindByCondition(p => p.Id.Equals(postId), trackChanges).SingleOrDefault();
+            return await FindByCondition(p => p.Id.Equals(postId), trackChanges).SingleOrDefaultAsync();
         }
 
-        public Post GetPostBySlug(string slug, bool trackChanges)
+        public async Task<Post> GetPostBySlugAsync(string slug, bool trackChanges)
         {
-            return FindByCondition(p => p.Slug.Equals(slug), trackChanges).SingleOrDefault();
+            return await FindByCondition(p => p.Slug.Equals(slug), trackChanges).SingleOrDefaultAsync();
         }
+
+        
         public void CreatePost(Post post)
         {
             Create(post);
+        }
+
+        public async Task<IEnumerable<Post>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges)
+        {
+            return await FindByCondition(x => ids.Contains(x.Id), trackChanges).ToListAsync();
+        }
+
+        public void DeletePost(Post post)
+        {
+            Delete(post);
+        }
+
+        public async Task<IEnumerable<Post>> GetPostsByCategoryAsync(Guid categoryId, bool trackChanges)
+        {
+            return await FindByCondition(p => p.CategoryId.Equals(categoryId), trackChanges).OrderByDescending(p => p.CreatedAt).ToListAsync();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Entities.Models
         public string? Content { get; set; }
         public DateTimeOffset? CreatedAt { get; set; } = DateTimeOffset.UtcNow;
         public DateTimeOffset? LastUpdatedAt { get; set; }
-        public Guid? ParentCommentId { get; set; } = Guid.Empty;
+        public Guid? ParentCommentId { get; set; } 
         public Comment? ParentComment { get; set; } //navigation to comment
         public ICollection<Comment>? Replies { get; set; } //children comment
 

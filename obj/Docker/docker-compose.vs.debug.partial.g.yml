@@ -15,7 +15,7 @@ services:
       - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages
     volumes:
       - C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi:/app:rw
-      - C:\Users\BABATUNDE\source\repos\BlogApi:/src:rw
+      - C:\Users\BABATUNDE\source\repos\BlogApi\src:/src:rw
       - C:\Users\BABATUNDE\vsdbg\vs2017u5:/remote_debugger:rw
       - C:\Users\BABATUNDE\.nuget\packages:/.nuget/packages:ro
       - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages:ro

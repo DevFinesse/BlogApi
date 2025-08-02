@@ -1,5 +1,6 @@
-﻿using Entities.Models;
-using Contracts;
+﻿using Contracts;
+using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
@@ -7,14 +8,27 @@ namespace Repository
     {
         public CategoryRepository(RepositoryContext repositoryContext) : base(repositoryContext) { }
 
-        public IEnumerable<Category> GetAllCategories(bool trackChanges)
+
+        public async Task<IEnumerable<Category>> GetAllCategoriesAsync(bool trackChanges)
         {
-            return FindAll(trackChanges).OrderBy(c => c.Name).ToList();
+            return await FindAll(trackChanges).OrderBy(c => c.Name).ToListAsync();
         }
 
-        public Category GetCategory(Guid categoryId, bool trackChanges)
+        public async Task<Category> GetCategoryAsync(Guid categoryId, bool trackChanges)
         {
-            return FindByCondition(c => c.Id.Equals(categoryId), trackChanges).SingleOrDefault();
+            return await FindByCondition(c => c.Id.Equals(categoryId), trackChanges).SingleOrDefaultAsync();
         }
+
+        public void CreateCategory(Category category)
+        {
+            Create(category);
+        }
+
+        public void DeleteCategory(Category category)
+        {
+            Delete(category);     
+        }
+
+       
     }
 }

@@ -3,40 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{608E0A74-5F96-4760-AA82-A8744BC9D891}|Repository\\Repository.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\repository\\commentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{608E0A74-5F96-4760-AA82-A8744BC9D891}|Repository\\Repository.csproj|solutionrelative:repository\\commentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FD90F23-0C9E-4FEC-ABD6-E17B60636D35}|BlogApi\\BlogApi.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\blogapi\\extensions\\migrationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FD90F23-0C9E-4FEC-ABD6-E17B60636D35}|BlogApi\\BlogApi.csproj|solutionrelative:blogapi\\extensions\\migrationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2844355E-06C6-4208-BC48-FE2987095328}|Shared\\Shared.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\shared\\datatransferobjects\\postcreationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2844355E-06C6-4208-BC48-FE2987095328}|Shared\\Shared.csproj|solutionrelative:shared\\datatransferobjects\\postcreationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FD90F23-0C9E-4FEC-ABD6-E17B60636D35}|BlogApi\\BlogApi.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\blogapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FD90F23-0C9E-4FEC-ABD6-E17B60636D35}|BlogApi\\BlogApi.csproj|solutionrelative:blogapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{63D9FCBB-292A-4728-BFE2-59ADE7E55402}|Service\\Service.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\service\\commentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63D9FCBB-292A-4728-BFE2-59ADE7E55402}|Service\\Service.csproj|solutionrelative:service\\commentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{108F71E0-893A-4B32-B4E9-2F14C4B4FF26}|Entities\\Entities.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\entities\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{108F71E0-893A-4B32-B4E9-2F14C4B4FF26}|Entities\\Entities.csproj|solutionrelative:entities\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2844355E-06C6-4208-BC48-FE2987095328}|Shared\\Shared.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\shared\\datatransferobjects\\commentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2844355E-06C6-4208-BC48-FE2987095328}|Shared\\Shared.csproj|solutionrelative:shared\\datatransferobjects\\commentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2844355E-06C6-4208-BC48-FE2987095328}|Shared\\Shared.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\shared\\datatransferobjects\\commentcreationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2844355E-06C6-4208-BC48-FE2987095328}|Shared\\Shared.csproj|solutionrelative:shared\\datatransferobjects\\commentcreationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D092C6D8-A606-4C4D-B165-116BAD83F054}|Contracts\\Contracts.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\contracts\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D092C6D8-A606-4C4D-B165-116BAD83F054}|Contracts\\Contracts.csproj|solutionrelative:contracts\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15C3BAD5-4EDF-4DB4-A087-EEB742E8D8C2}|Service.Contracts\\Service.Contracts.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\service.contracts\\icommentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15C3BAD5-4EDF-4DB4-A087-EEB742E8D8C2}|Service.Contracts\\Service.Contracts.csproj|solutionrelative:service.contracts\\icommentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4F5050E8-1BC8-4F63-9377-4E9EA011D787}|BlogApi.Presentation\\BlogApi.Presentation.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\blogapi.presentation\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4F5050E8-1BC8-4F63-9377-4E9EA011D787}|BlogApi.Presentation\\BlogApi.Presentation.csproj|solutionrelative:blogapi.presentation\\controllers\\commentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FD90F23-0C9E-4FEC-ABD6-E17B60636D35}|BlogApi\\BlogApi.csproj|c:\\users\\babatunde\\source\\repos\\blogapi\\blogapi\\contextfactory\\repositorycontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FD90F23-0C9E-4FEC-ABD6-E17B60636D35}|BlogApi\\BlogApi.csproj|solutionrelative:blogapi\\contextfactory\\repositorycontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -67,118 +43,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CommentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Repository\\CommentRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\CommentRepository.cs",
-              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Repository\\CommentRepository.cs",
-              "RelativeToolTip": "Repository\\CommentRepository.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAADIAAAAyAAAAAAAAAA==",
+              "Title": "MigrationExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\Extensions\\MigrationExtensions.cs",
+              "RelativeDocumentMoniker": "BlogApi\\Extensions\\MigrationExtensions.cs",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\Extensions\\MigrationExtensions.cs",
+              "RelativeToolTip": "BlogApi\\Extensions\\MigrationExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T07:15:05.787Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PostCreationDto.cs",
-              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\DataTransferObjects\\PostCreationDto.cs",
-              "RelativeDocumentMoniker": "Shared\\DataTransferObjects\\PostCreationDto.cs",
-              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\DataTransferObjects\\PostCreationDto.cs",
-              "RelativeToolTip": "Shared\\DataTransferObjects\\PostCreationDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T11:43:56.578Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CommentDto.cs",
-              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\DataTransferObjects\\CommentDto.cs",
-              "RelativeDocumentMoniker": "Shared\\DataTransferObjects\\CommentDto.cs",
-              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\DataTransferObjects\\CommentDto.cs",
-              "RelativeToolTip": "Shared\\DataTransferObjects\\CommentDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T15:27:00.648Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CommentCreationDto.cs",
-              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\DataTransferObjects\\CommentCreationDto.cs",
-              "RelativeDocumentMoniker": "Shared\\DataTransferObjects\\CommentCreationDto.cs",
-              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\DataTransferObjects\\CommentCreationDto.cs",
-              "RelativeToolTip": "Shared\\DataTransferObjects\\CommentCreationDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T15:21:48.246Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ICommentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Contracts\\ICommentRepository.cs",
-              "RelativeDocumentMoniker": "Contracts\\ICommentRepository.cs",
-              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Contracts\\ICommentRepository.cs",
-              "RelativeToolTip": "Contracts\\ICommentRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T14:19:24.115Z",
+              "WhenOpened": "2025-08-02T08:58:40.592Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CommentService.cs",
-              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Service\\CommentService.cs",
-              "RelativeDocumentMoniker": "Service\\CommentService.cs",
-              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Service\\CommentService.cs",
-              "RelativeToolTip": "Service\\CommentService.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAgwDsAAAAJAAAAAAAAAA==",
+              "Title": "RepositoryContextFactory.cs",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\ContextFactory\\RepositoryContextFactory.cs",
+              "RelativeDocumentMoniker": "BlogApi\\ContextFactory\\RepositoryContextFactory.cs",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\ContextFactory\\RepositoryContextFactory.cs",
+              "RelativeToolTip": "BlogApi\\ContextFactory\\RepositoryContextFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T12:35:37.861Z",
+              "WhenOpened": "2025-08-02T08:55:49.754Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Comment.cs",
-              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Models\\Comment.cs",
-              "RelativeDocumentMoniker": "Entities\\Models\\Comment.cs",
-              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Models\\Comment.cs",
-              "RelativeToolTip": "Entities\\Models\\Comment.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAnAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\Program.cs",
+              "RelativeDocumentMoniker": "BlogApi\\Program.cs",
+              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\Program.cs",
+              "RelativeToolTip": "BlogApi\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T10:59:28.924Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ICommentService.cs",
-              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Service.Contracts\\ICommentService.cs",
-              "RelativeDocumentMoniker": "Service.Contracts\\ICommentService.cs",
-              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Service.Contracts\\ICommentService.cs",
-              "RelativeToolTip": "Service.Contracts\\ICommentService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T09:42:44.446Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CommentsController.cs",
-              "DocumentMoniker": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi.Presentation\\Controllers\\CommentsController.cs",
-              "RelativeDocumentMoniker": "BlogApi.Presentation\\Controllers\\CommentsController.cs",
-              "ToolTip": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi.Presentation\\Controllers\\CommentsController.cs",
-              "RelativeToolTip": "BlogApi.Presentation\\Controllers\\CommentsController.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAcwDcAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T10:22:07.359Z",
+              "WhenOpened": "2025-08-02T08:54:39.407Z",
               "EditorCaption": ""
             }
           ]

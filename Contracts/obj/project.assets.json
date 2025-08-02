@@ -444,6 +444,16 @@
         "runtime": {
           "bin/placeholder/Entities.dll": {}
         }
+      },
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
+        }
       }
     }
   },
@@ -1060,11 +1070,17 @@
       "type": "project",
       "path": "../Entities/Entities.csproj",
       "msbuildProject": "../Entities/Entities.csproj"
+    },
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Shared.csproj",
+      "msbuildProject": "../Shared/Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Entities >= 1.0.0"
+      "Entities >= 1.0.0",
+      "Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1102,6 +1118,9 @@
           "projectReferences": {
             "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Entities.csproj": {
               "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Entities.csproj"
+            },
+            "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\Shared.csproj": {
+              "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\Shared.csproj"
             }
           }
         }

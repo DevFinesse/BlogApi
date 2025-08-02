@@ -15,3 +15,8 @@ C:\Users\BABATUNDE\source\repos\BlogApi\Repository\obj\Debug\net8.0\Repository.p
 C:\Users\BABATUNDE\source\repos\BlogApi\Repository\obj\Debug\net8.0\ref\Repository.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\Repository\bin\Debug\net8.0\Contracts.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\Repository\bin\Debug\net8.0\Contracts.pdb
+C:\Users\BABATUNDE\source\repos\BlogApi\Repository\obj\Debug\net8.0\Repository.sourcelink.json
+C:\Users\BABATUNDE\source\repos\BlogApi\Repository\bin\Debug\net8.0\Shared.dll
+C:\Users\BABATUNDE\source\repos\BlogApi\Repository\bin\Debug\net8.0\Shared.pdb
+C:\Users\BABATUNDE\source\repos\BlogApi\Repository\bin\Debug\net8.0\Repository.runtimeconfig.json
+C:\Users\BABATUNDE\source\repos\BlogApi\Repository\obj\Debug\net8.0\Repository.genruntimeconfig.cache

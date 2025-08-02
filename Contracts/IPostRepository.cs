@@ -9,12 +9,14 @@ namespace Contracts
 {
     public interface IPostRepository
     {
-        IEnumerable<Post> GetAllPosts(bool trackChanges);
-
-        Post GetPost (Guid postId, bool trackChanges);
-        Post GetPostBySlug (string slug, bool trackChanges);
+        Task<IEnumerable<Post>> GetAllPostsAsync(bool trackChanges);
+        Task<Post> GetPostAsync (Guid postId, bool trackChanges);
+        Task<IEnumerable<Post>> GetByIdsAsync (IEnumerable<Guid> ids, bool trackChanges);
+        Task<Post> GetPostBySlugAsync (string slug, bool trackChanges);
         void CreatePost(Post post);
-
+        void DeletePost(Post post);
         Task<bool> SlugExistsAsync(string slug, Guid? excludedId = null);
+
+        Task<IEnumerable<Post>> GetPostsByCategoryAsync (Guid categoryId, bool trackChanges);
     }
 }

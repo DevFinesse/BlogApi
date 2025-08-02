@@ -15,3 +15,6 @@ C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\bin\Debug\net8.0\Se
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\obj\Debug\net8.0\BlogApi..21FD29BC.Up2Date
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\bin\Debug\net8.0\Shared.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\bin\Debug\net8.0\Shared.pdb
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\obj\Debug\net8.0\BlogApi.Presentation.sourcelink.json
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\bin\Debug\net8.0\Entities.dll
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi.Presentation\bin\Debug\net8.0\Entities.pdb

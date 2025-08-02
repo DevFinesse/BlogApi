@@ -15,3 +15,6 @@ C:\Users\BABATUNDE\source\repos\BlogApi\LoggerService\obj\Debug\net8.0\LoggerSer
 C:\Users\BABATUNDE\source\repos\BlogApi\LoggerService\obj\Debug\net8.0\ref\LoggerService.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\LoggerService\bin\Debug\net8.0\Entities.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\LoggerService\bin\Debug\net8.0\Entities.pdb
+C:\Users\BABATUNDE\source\repos\BlogApi\LoggerService\obj\Debug\net8.0\LoggerService.sourcelink.json
+C:\Users\BABATUNDE\source\repos\BlogApi\LoggerService\bin\Debug\net8.0\Shared.dll
+C:\Users\BABATUNDE\source\repos\BlogApi\LoggerService\bin\Debug\net8.0\Shared.pdb

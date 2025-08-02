@@ -1,0 +1,91 @@
+name: dockercompose16797274330637010240
+services:
+  blogapi:
+    build:
+      context: C:\Users\BABATUNDE\source\repos\BlogApi\src
+      dockerfile: Dockerfile
+    container_name: blog-api
+    depends_on:
+      db:
+        condition: service_healthy
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "5000"
+      ASPNETCORE_HTTPS_PORTS: "5001"
+      ConnectionStrings__SqlConnection: Host=db;Port=5432;Database=blog;Username=postgres;Password=password
+    image: blogapi
+    networks:
+      mynetwork: null
+    ports:
+      - mode: ingress
+        target: 5000
+        published: "5000"
+        protocol: tcp
+      - mode: ingress
+        target: 5001
+        published: "5001"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: C:\Users\BABATUNDE\AppData\Roaming/Microsoft/UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\BABATUNDE\AppData\Roaming/Microsoft/UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\BABATUNDE\AppData\Roaming/ASP.NET/Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\BABATUNDE\AppData\Roaming/ASP.NET/Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+  db:
+    container_name: blog.databse
+    environment:
+      POSTGRES_DB: blog
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U postgres
+      timeout: 10s
+      interval: 10s
+      retries: 5
+      start_period: 30s
+    image: postgres:latest
+    networks:
+      mynetwork: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "4400"
+        protocol: tcp
+      - mode: ingress
+        target: 5432
+        published: "5432"
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: volume
+        source: postgres_data
+        target: /var/lib/postgresql/data
+        volume: {}
+networks:
+  mynetwork:
+    name: dockercompose16797274330637010240_mynetwork
+volumes:
+  postgres_data:
+    name: dockercompose16797274330637010240_postgres_data

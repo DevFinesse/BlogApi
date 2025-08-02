@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
+using System.Text.Json;
 
 namespace BlogApi.Presentation.Controllers
 {
-    [Route("api/posts/{slug}")]
+    [Route("api/posts/{postId}/comments")]
     [ApiController]
     public class CommentsController : ControllerBase
     {
@@ -16,52 +17,61 @@ namespace BlogApi.Presentation.Controllers
             _service = service;
         }
 
-        [HttpGet("comments")]
-        public IActionResult GetCommentsForPost(string slug)
+        [HttpGet]
+        public async Task<IActionResult> GetCommentsForPost(Guid postId, [FromQuery] CommentParameters commentParameters)
         {
-            var post = _service.PostService.GetPostBySlug(slug, trackChanges: false);
-            var comments = _service.CommentService.GetComments(post.Id, trackChanges: false);
-            return Ok(comments);
+            var pagedResult = await _service.CommentService.GetCommentsAsync(postId, commentParameters, trackChanges: false);
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaData));
+            return Ok(pagedResult.comments);
         }
 
-        [HttpGet("comment/{id:Guid}", Name = "GetCommentForPost")]
-        public IActionResult GetCommentForPost(string slug, Guid id)
+        [HttpGet("{id:Guid}", Name = "GetCommentForPost")]
+        public async Task<IActionResult> GetCommentForPost(Guid postId, Guid id)
         {
-            var post = _service.PostService.GetPostBySlug(slug, trackChanges: false);
-            var comment = _service.CommentService.GetComment(post.Id, id, trackChanges: false);
+            var comment = await _service.CommentService.GetCommentAsync(postId, id, trackChanges: false);
             return Ok(comment);
         }
 
-        [HttpPost("comment")]
-        public IActionResult CreateCommentForPost(string slug, [FromBody] CommentCreationDto comment)
+        [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> CreateCommentForPost(Guid postId, [FromBody] CommentCreationDto comment)
         {
-            var post = _service.PostService.GetPostBySlug(slug, trackChanges: false);
-            if (post is null)
-            {
-                return BadRequest("Post does not exist");
-            }
-            if (comment is null)
-                return BadRequest("CommentForCreationDto Is null");
-
-            var commentToReturn = _service.CommentService.CreateCommentForPost(post.Id, comment, trackChanges: false);
+            var commentToReturn =await _service.CommentService.CreateCommentForPostAsync(postId, comment, trackChanges: false);
             return Ok(commentToReturn);
 
         }
 
-        [HttpGet("comments/{commentId}")]
-        public IActionResult GetCommentWithReplies(string slug, Guid commentId)
+        [HttpGet("threaded")]
+        public async Task<IActionResult> GetThreadedComments(Guid postId) 
         {
-            var post = _service.PostService.GetPostBySlug(slug, trackChanges: false);
-            var comments = _service.CommentService.GetCommentWithReplies(commentId, trackChanges: false);
+            
+            var comments = await _service.CommentService.GetThreadedCommentsAsync(postId, trackChanges: false); 
             return Ok(comments);
         }
 
-        [HttpGet("comments/threaded")]
-        public IActionResult GetThreadedComments(string slug) 
+        [HttpDelete]
+        public async Task<IActionResult> DeleteCommentForPost(Guid postId, Guid id) 
         {
-            var post = _service.PostService.GetPostBySlug(slug, trackChanges: false);
-            var comments = _service.CommentService.GetThreadedComments(post.Id, trackChanges: false); 
-            return Ok(comments);
+            await _service.CommentService.DeleteCommentForPostAsync(postId, id, trackChanges: false);
+            return NoContent(); 
         }
+
+        [HttpPut("{id:guid}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> UpdateCommentForPost(Guid postId, Guid id, [FromBody] CommentUpdateDto comment)
+        {
+            if (comment is null)
+                return BadRequest("body cannot be empty");
+            if (!ModelState.IsValid)
+            {
+                return UnprocessableEntity(ModelState);
+            }
+
+            var post = await _service.PostService.GetPostAsync(postId, trackChanges: false);
+            await _service.CommentService.UpdateCommentForPostAsync(post.Id, id, comment, postTrackChanges: false, commentTrackChanges: true);
+            return NoContent();
+            
+        }
+
     }
 }

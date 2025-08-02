@@ -12,21 +12,18 @@ namespace Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfiguration(new PostConfiguration());
-            modelBuilder.ApplyConfiguration(new CommentConfiguration());
-            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            //modelBuilder.ApplyConfiguration(new PostConfiguration());
+            //modelBuilder.ApplyConfiguration(new CommentConfiguration());
+            //modelBuilder.ApplyConfiguration(new CategoryConfiguration());
 
-            modelBuilder.Entity<Comment>()
-                .HasOne(c => c.ParentComment)
-                .WithMany(p => p.Replies)
-                .HasForeignKey(c  => c.ParentCommentId)
-                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(RepositoryContext).Assembly);
 
-            modelBuilder.Entity<Comment>()
-                .HasOne(c => c.Post)
-                .WithMany(p => p.Comments)
-                .HasForeignKey(c => c.PostId)
-                .OnDelete(DeleteBehavior.Cascade);
+
+            //modelBuilder.Entity<Comment>()
+            //  .HasOne(c => c.ParentComment)
+            //.WithMany(p => p.Replies)
+            //.HasForeignKey(c  => c.ParentCommentId)
+            //.OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Comment>()
                 .HasIndex(c => c.PostId);

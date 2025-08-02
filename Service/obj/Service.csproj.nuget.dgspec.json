@@ -35,6 +35,9 @@
             "projectReferences": {
               "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Entities.csproj": {
                 "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Entities.csproj"
+              },
+              "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\Shared.csproj"
               }
             }
           }
@@ -179,6 +182,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Entities.csproj"
+              },
               "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\Shared.csproj": {
                 "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\Shared.csproj"
               }

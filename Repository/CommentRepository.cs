@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Shared.RequestFeatures;
 
 namespace Repository
 {
@@ -10,16 +11,20 @@ namespace Repository
         {
         }
 
-        public IEnumerable<Comment> GetComments(Guid postId, bool trackChanges)
+        public async Task<PagedList<Comment>> GetCommentsAsync(Guid postId, CommentParameters commentParameters, bool trackChanges)
         {
-            return FindByCondition(c => c.PostId.Equals(postId),trackChanges)
+            var comments =  await FindByCondition(c => c.PostId.Equals(postId),trackChanges)
                 .Include(c => c.Replies)
-                .OrderBy(c => c.CreatedAt).ToList();
+                .OrderBy(c => c.CreatedAt)
+                .ToListAsync();
+
+            return PagedList<Comment>
+                .ToPagedList(comments, commentParameters.PageNumber, commentParameters.PageSize);
         }
 
-        public Comment GetComment(Guid postId, Guid id, bool trackChanges) 
+        public async Task<Comment> GetCommentAsync(Guid postId,  Guid id, bool trackChanges) 
         {
-            return FindByCondition(c => c.PostId.Equals(postId) && c.Id.Equals(id), trackChanges).Include(c => c.Replies).SingleOrDefault();
+            return await FindByCondition(c => c.PostId.Equals(postId) && c.Id.Equals(id), trackChanges).SingleOrDefaultAsync();
         }
 
         public void CreateCommentForPost(Guid postId, Comment comment) 
@@ -28,13 +33,7 @@ namespace Repository
             Create(comment);
         }
 
-        public IEnumerable<Comment> GetCommentWithReplies(Guid commentId, bool trackChanges)
-        {
-           return FindByCondition(c => c.ParentCommentId.Equals(commentId),trackChanges).Include(c => c.Replies).OrderByDescending(c => c.CreatedAt).ToList();
-         
-        }
-
-        public IEnumerable<Comment> GetThreadedComments(Guid postId, bool trackChanges)
+        public async Task<IEnumerable<Comment>> GetThreadedCommentsAsync(Guid postId, bool trackChanges)
         { 
             // Start with root comments (no parent)
             var query = FindByCondition(c => c.PostId.Equals(postId) && c.ParentCommentId == null, trackChanges);
@@ -42,7 +41,7 @@ namespace Repository
             // Recursively include all nested replies
             var comments = LoadRepliesRecursively(query);
             
-            return comments.OrderByDescending(c => c.CreatedAt).ToList();
+            return await comments.OrderByDescending(c => c.CreatedAt).ToListAsync();
         }
 
         private IQueryable<Comment> LoadRepliesRecursively(IQueryable<Comment> query)
@@ -63,6 +62,11 @@ namespace Repository
             }
             
             return query;
+        }
+
+        public void DeleteComment(Comment comment)
+        {
+            Delete(comment);
         }
     }
 }

@@ -11,7 +11,6 @@ namespace Contracts
         IPostRepository PostRepository { get; }
         ICommentRepository CommentRepository { get; }
         ICategoryRepository CategoryRepository { get; }
-
-        void Save();
+        Task SaveAsync();
     }
 }

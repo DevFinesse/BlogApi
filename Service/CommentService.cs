@@ -4,6 +4,7 @@ using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 
 namespace Service
 {
@@ -20,54 +21,62 @@ namespace Service
             _mapper = mapper;
         }
 
-        public IEnumerable<CommentDto> GetComments(Guid postId, bool trackChanges)
+        public async Task<(IEnumerable<CommentDto> comments, MetaData metaData)> GetCommentsAsync(Guid postId, CommentParameters commentParameters, bool trackChanges)
         {
-            var post = _repository.PostRepository.GetPost(postId, trackChanges) ?? throw new PostNotFoundException(postId);
-            var commentsFromDb = _repository.CommentRepository.GetComments(postId,trackChanges);
-            var commentDto = _mapper.Map<IEnumerable<CommentDto>>(commentsFromDb);
-            return commentDto;
-
+            var post = await _repository.PostRepository.GetPostAsync(postId, trackChanges) ?? throw new PostNotFoundException(postId);
+            var commentsWithMetadata = await _repository.CommentRepository.GetCommentsAsync(postId, commentParameters, trackChanges);
+            var commentsDto = _mapper.Map<IEnumerable<CommentDto>>(commentsWithMetadata);   
+            return (comments: commentsDto, metaData: commentsWithMetadata.MetaData);
         }
 
-        public CommentDto GetComment(Guid postId, Guid id, bool trackChanges) 
+        public async Task<CommentDto> GetCommentAsync(Guid postId, Guid id, bool trackChanges) 
         {
-            var post = _repository.PostRepository.GetPost(postId, trackChanges) ?? throw new PostNotFoundException(postId);
-            var commentDb = _repository.CommentRepository.GetComment(postId, id, trackChanges) ?? throw new CommentNotFoundException(id);
-            var commentDto = _mapper.Map<CommentDto>(commentDb);
+            var post = await _repository.PostRepository.GetPostAsync(postId, trackChanges) ?? throw new PostNotFoundException(postId);
+            var commentFromDb = await _repository.CommentRepository.GetCommentAsync(postId, id, trackChanges) ?? throw new CommentNotFoundException(id);
+            var commentDto = _mapper.Map<CommentDto>(commentFromDb);
             return commentDto;
         }
 
-        public CommentDto CreateCommentForPost(Guid postId, CommentCreationDto commentCreationDto, bool trackChanges)
+        public async Task<CommentDto> CreateCommentForPostAsync(Guid postId, CommentCreationDto commentCreationDto, bool trackChanges)
         {
-            var post = _repository.PostRepository.GetPost(postId, trackChanges) ?? throw new PostNotFoundException(postId);
+            var post = await _repository.PostRepository.GetPostAsync(postId, trackChanges) ?? throw new PostNotFoundException(postId);
             
             // Check if this is a reply to another comment
             if (commentCreationDto.ParentCommentId.HasValue)
             {
-                var parentComment = _repository.CommentRepository.GetComment(postId, commentCreationDto.ParentCommentId.Value, trackChanges) 
+                var parentComment = await _repository.CommentRepository.GetCommentAsync(postId, commentCreationDto.ParentCommentId.Value, trackChanges) 
                     ?? throw new CommentNotFoundException(commentCreationDto.ParentCommentId.Value);
-
             }
 
             var commentEntity = _mapper.Map<Comment>(commentCreationDto);
             _repository.CommentRepository.CreateCommentForPost(postId, commentEntity);
-            _repository.Save();
+             await _repository.SaveAsync();
             var commentToReturn = _mapper.Map<CommentDto>(commentEntity);
             return commentToReturn;
         }
 
-        public IEnumerable<CommentDto> GetCommentWithReplies(Guid commentId, bool trackChanges)
+        public async Task<IEnumerable<CommentDto>> GetThreadedCommentsAsync(Guid postId, bool trackChanges)
         {
-            var comments = _repository.CommentRepository.GetCommentWithReplies(commentId, trackChanges);
+            var comments = await _repository.CommentRepository.GetThreadedCommentsAsync(postId, trackChanges);
             var commentDto = _mapper.Map<IEnumerable<CommentDto>>(comments);
             return commentDto;
         }
 
-        public IEnumerable<CommentDto> GetThreadedComments(Guid postId, bool trackChanges)
+        public async Task DeleteCommentForPostAsync(Guid postId, Guid id, bool trackChanges)
         {
-            var comments = _repository.CommentRepository.GetThreadedComments(postId, trackChanges);
-            var commentDto = _mapper.Map<IEnumerable<CommentDto>>(comments);
-            return commentDto;
+            var post = await _repository.PostRepository.GetPostAsync(postId, trackChanges) ?? throw new PostNotFoundException(postId);
+            var commentForPost = await _repository.CommentRepository.GetCommentAsync(postId, id, trackChanges) ?? throw new CommentNotFoundException(id);
+            _repository.CommentRepository.DeleteComment(commentForPost);
+            await _repository.SaveAsync();
+
+        }
+
+        public async Task UpdateCommentForPostAsync(Guid postId, Guid id, CommentUpdateDto commentUpdate, bool postTrackChanges, bool commentTrackChanges)
+        {
+            var post = await _repository.PostRepository.GetPostAsync(postId, postTrackChanges) ?? throw new PostNotFoundException(postId);
+            var commentEntity = await _repository.CommentRepository.GetCommentAsync(postId, id, commentTrackChanges) ?? throw new CommentNotFoundException(id);
+            _mapper.Map(commentUpdate, commentEntity);
+            await _repository.SaveAsync();
         }
     }
 }
