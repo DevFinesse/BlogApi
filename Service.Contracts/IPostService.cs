@@ -1,11 +1,12 @@
 ﻿using Entities.Models;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 
 namespace Service.Contracts
 {
     public interface IPostService
     {
-        Task<IEnumerable<PostDto>> GetAllPostsAsync(bool trackChanges);
+        Task<(IEnumerable<PostDto> posts, MetaData metaData)> GetAllPostsAsync(bool trackChanges, PostParameter postParameter);
 
         Task<PostDto> GetPostAsync(Guid id, bool trackChanges);
         Task<IEnumerable<PostDto>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);

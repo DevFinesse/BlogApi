@@ -16,10 +16,13 @@ namespace Repository
             var comments =  await FindByCondition(c => c.PostId.Equals(postId),trackChanges)
                 .Include(c => c.Replies)
                 .OrderBy(c => c.CreatedAt)
+                .Skip((commentParameters.PageNumber - 1) * commentParameters.PageSize )
+                .Take(commentParameters.PageSize)
                 .ToListAsync();
 
-            return PagedList<Comment>
-                .ToPagedList(comments, commentParameters.PageNumber, commentParameters.PageSize);
+            var count = await FindByCondition(c => c.PostId.Equals(postId), trackChanges).CountAsync();
+
+            return new PagedList<Comment>(comments, count, commentParameters.PageNumber, commentParameters.PageSize);
         }
 
         public async Task<Comment> GetCommentAsync(Guid postId,  Guid id, bool trackChanges) 

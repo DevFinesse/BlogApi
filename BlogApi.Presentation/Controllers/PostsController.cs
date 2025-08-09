@@ -1,8 +1,11 @@
 ﻿using BlogApi.Presentation.ModelBinders;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
+using System.Text.Json;
 
 namespace BlogApi.Presentation.Controllers
 {
@@ -19,10 +22,11 @@ namespace BlogApi.Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetPosts()
+        public async Task<IActionResult> GetPosts([FromQuery] PostParameter postParameter)
         {
-            var posts = await _service.PostService.GetAllPostsAsync(trackChanges: false);
-            return Ok(posts);
+            var postsWithMetadata = await _service.PostService.GetAllPostsAsync(trackChanges: false, postParameter);
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(postsWithMetadata.metaData));
+            return Ok(postsWithMetadata.posts);
         }
 
         [HttpGet("{id:guid}", Name ="PostById")]

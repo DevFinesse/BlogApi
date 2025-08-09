@@ -4,6 +4,7 @@ using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 
 namespace Service
 {
@@ -22,16 +23,21 @@ namespace Service
             _slugService = slugService;
         }
 
-        public async Task<IEnumerable<PostDto>> GetAllPostsAsync(bool trackChanges)
+        public async Task<(IEnumerable<PostDto> posts, MetaData metaData)> GetAllPostsAsync(bool trackChanges, PostParameter postParameter)
         {
-            var posts = await _repository.PostRepository.GetAllPostsAsync(trackChanges);
+            var posts = await _repository.PostRepository.GetAllPostsAsync(trackChanges, postParameter);
+            var categoryIds = posts.Select(c => c.CategoryId);
+            
+            
             var postsDto = _mapper.Map<IEnumerable<PostDto>>(posts);
-            return postsDto;
+            return (posts: postsDto, metaData: posts.MetaData);
         }
 
         public async Task<PostDto> GetPostAsync(Guid id, bool trackChanges)
         {
             var post =  await _repository.PostRepository.GetPostAsync(id, trackChanges);
+            var category = await _repository.CategoryRepository.GetCategoryAsync(post.CategoryId, trackChanges);
+            post.Category = category;
             var postDto = _mapper.Map<PostDto>(post);
             return postDto;
         }

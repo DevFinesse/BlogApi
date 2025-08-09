@@ -1,6 +1,8 @@
 ﻿using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Shared.RequestFeatures;
+using System.Xml.Linq;
 
 namespace Repository
 {
@@ -18,11 +20,19 @@ namespace Repository
 
             return await query.AnyAsync();
         }
-        public async Task<IEnumerable<Post>> GetAllPostsAsync(bool trackChanges)
+        public async Task<PagedList<Post>> GetAllPostsAsync(bool trackChanges, PostParameter postParameter)
         {
-            return await FindAll(trackChanges)
+            var posts = await FindAll(trackChanges)
+                .Include(c => c.Category)
+                .Include(c => c.Comments)
                 .OrderByDescending(p => p.CreatedAt)
+                .Skip((postParameter.PageNumber - 1) * postParameter.PageSize)
+                .Take(postParameter.PageSize)
                 .ToListAsync();
+
+            var count = await FindAll(trackChanges).CountAsync();
+
+            return new PagedList<Post>(posts, count, postParameter.PageNumber, postParameter.PageSize);
         }
 
         public async Task<Post> GetPostAsync(Guid postId, bool trackChanges)

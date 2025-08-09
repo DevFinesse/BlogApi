@@ -53,9 +53,9 @@ app.ConfigureExceptionHandler(logger);
 
 if (app.Environment.IsProduction())
     app.UseHsts();
+
+if (app.Environment.IsDevelopment())
     app.ApplyMigrations();
-
-
 
 app.UseSwagger();
 app.UseSwaggerUI(s =>
@@ -63,10 +63,7 @@ app.UseSwaggerUI(s =>
     s.SwaggerEndpoint("/swagger/v1/swagger.json", "Isaacman API v1");
 });
 
-
-
 // Configure the HTTP request pipeline.
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -76,7 +73,5 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 app.UseCors("CorsPolicy");
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

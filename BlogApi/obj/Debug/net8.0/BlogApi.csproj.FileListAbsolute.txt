@@ -185,3 +185,7 @@ C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\Microsoft.Exten
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Physical.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json

@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.Enums
+namespace Shared.RequestFeatures
 {
-    public enum PostStatus
+    public class PostParameter : RequestParameters
     {
-        Published = 1,
-        Draft
     }
 }
