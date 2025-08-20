@@ -1,5 +1,7 @@
 ﻿using Contracts;
 using LoggerService;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Repository;
@@ -46,6 +48,29 @@ namespace BlogApi.Extensions
             services.AddSwaggerGen(s =>
             {
                 s.SwaggerDoc("v1", new OpenApiInfo { Title = "Isaacman Blog Api", Version = "v1" });
+            });
+        }
+
+        public static void AddCustomMediaTypes(this IServiceCollection services) 
+        { 
+            services.PostConfigure<MvcOptions>(config => {
+                var systemTextJsonOutputFormatter = config.OutputFormatters
+                    .OfType<SystemTextJsonOutputFormatter>()
+                    .FirstOrDefault();
+
+                if (systemTextJsonOutputFormatter != null)
+                {
+                    systemTextJsonOutputFormatter.SupportedMediaTypes.Add("application/vnd.isaacman.hateoas+json");
+                }
+
+                var xmlOutputFormatter = config.OutputFormatters
+                    .OfType<XmlDataContractSerializerOutputFormatter>()
+                    .FirstOrDefault();
+
+                if (xmlOutputFormatter != null) 
+                {
+                    xmlOutputFormatter.SupportedMediaTypes.Add("application/vnd.isaacman.hateoas+xml");
+                }
             });
         }
 

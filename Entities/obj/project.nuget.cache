@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IolHCst+nXs=",
+  "dgSpecHash": "B2WmLqQD6W8=",
   "success": true,
   "projectFilePath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Entities.csproj",
   "expectedPackageFiles": [
@@ -30,15 +30,5 @@
     "C:\\Users\\BABATUNDE\\.nuget\\packages\\system.buffers\\4.6.0\\system.buffers.4.6.0.nupkg.sha512",
     "C:\\Users\\BABATUNDE\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.",
-      "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Entities.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Entities.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }

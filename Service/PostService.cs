@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using Contracts;
 using Entities.Exceptions;
+using Entities.LinkModels;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 using Shared.RequestFeatures;
+using System.Dynamic;
 
 namespace Service
 {
@@ -14,23 +16,27 @@ namespace Service
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
         private readonly ISlugService _slugService;
+        private readonly IPostLinks _postLinks;
 
-        public PostService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper, ISlugService slugService)
+        public PostService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper, ISlugService slugService, IPostLinks postLinks)
         {
             _repository = repository;
             _logger = logger;
             _mapper = mapper;
             _slugService = slugService;
+            _postLinks = postLinks;
         }
 
-        public async Task<(IEnumerable<PostDto> posts, MetaData metaData)> GetAllPostsAsync(bool trackChanges, PostParameter postParameter)
+        public async Task<(LinkResponse linkResponse, MetaData metaData)> GetAllPostsAsync(bool trackChanges, LinkParameters linkParameters)
         {
-            var posts = await _repository.PostRepository.GetAllPostsAsync(trackChanges, postParameter);
-            var categoryIds = posts.Select(c => c.CategoryId);
+            
+            var postsWithMetadata = await _repository.PostRepository.GetAllPostsAsync(trackChanges, linkParameters.PostParameter);
+            var categoryIds = postsWithMetadata.Select(c => c.CategoryId);
             
             
-            var postsDto = _mapper.Map<IEnumerable<PostDto>>(posts);
-            return (posts: postsDto, metaData: posts.MetaData);
+            var postsDto = _mapper.Map<IEnumerable<PostDto>>(postsWithMetadata);
+            var links = _postLinks.TryGenerateLinks(postsDto, linkParameters.PostParameter.Fields, linkParameters.Context);
+            return (linkResponse: links, metaData: postsWithMetadata.MetaData);
         }
 
         public async Task<PostDto> GetPostAsync(Guid id, bool trackChanges)

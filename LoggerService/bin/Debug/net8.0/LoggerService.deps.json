@@ -303,7 +303,8 @@
       "Entities/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.18",
-          "Microsoft.AspNetCore.Mvc.Abstractions": "2.3.0"
+          "Microsoft.AspNetCore.Mvc.Abstractions": "2.3.0",
+          "Shared": "1.0.0"
         },
         "runtime": {
           "Entities.dll": {
@@ -313,9 +314,6 @@
         }
       },
       "Shared/1.0.0": {
-        "dependencies": {
-          "Entities": "1.0.0"
-        },
         "runtime": {
           "Shared.dll": {
             "assemblyVersion": "1.0.0.0",

@@ -1,4 +1,6 @@
-﻿using BlogApi.Presentation.ModelBinders;
+﻿using BlogApi.Presentation.ActionFilters;
+using BlogApi.Presentation.ModelBinders;
+using Entities.LinkModels;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -22,11 +24,14 @@ namespace BlogApi.Presentation.Controllers
         }
 
         [HttpGet]
+        [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public async Task<IActionResult> GetPosts([FromQuery] PostParameter postParameter)
         {
-            var postsWithMetadata = await _service.PostService.GetAllPostsAsync(trackChanges: false, postParameter);
-            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(postsWithMetadata.metaData));
-            return Ok(postsWithMetadata.posts);
+            var linkParams = new LinkParameters(postParameter, HttpContext);
+            var result = await _service.PostService.GetAllPostsAsync(trackChanges: false, linkParams);
+           
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(result.metaData));
+            return result.linkResponse.HasLink ? Ok(result.linkResponse.LinkedEntities) : Ok(result.linkResponse.ShapedEntities);
         }
 
         [HttpGet("{id:guid}", Name ="PostById")]

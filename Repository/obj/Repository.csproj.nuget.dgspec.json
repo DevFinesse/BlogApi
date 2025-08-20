@@ -105,7 +105,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\Shared.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -286,11 +290,7 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {
-              "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Entities.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {

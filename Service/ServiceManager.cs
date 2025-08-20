@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Contracts;
 using Service.Contracts;
+using Shared.DataTransferObjects;
 
 namespace Service
 {
@@ -10,9 +11,9 @@ namespace Service
         private readonly Lazy<ICategoryService> _categoryService;
         private readonly Lazy<ICommentService> _commentService;
 
-        public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager logger,IMapper mapper, ISlugService slugService)
+        public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager logger,IMapper mapper, ISlugService slugService, IPostLinks postLinks)
         {
-            _postService = new Lazy<IPostService>(() => new PostService(repositoryManager, logger, mapper, slugService));
+            _postService = new Lazy<IPostService>(() => new PostService(repositoryManager, logger, mapper, slugService, postLinks));
             _categoryService = new Lazy<ICategoryService>(() => new CategoryService(repositoryManager,logger, mapper));
             _commentService = new Lazy<ICommentService>(() => new CommentService(repositoryManager, logger, mapper));
         }

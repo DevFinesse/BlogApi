@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Repository.Extensions;
 using Shared.RequestFeatures;
 using System.Xml.Linq;
 
@@ -24,7 +25,7 @@ namespace Repository
         {
             var posts = await FindAll(trackChanges)
                 .Include(c => c.Category)
-                .Include(c => c.Comments)
+                .Search(postParameter.SearchTerm)
                 .OrderByDescending(p => p.CreatedAt)
                 .Skip((postParameter.PageNumber - 1) * postParameter.PageSize)
                 .Take(postParameter.PageSize)

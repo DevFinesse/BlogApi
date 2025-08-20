@@ -307,7 +307,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\Shared.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -643,6 +647,9 @@
               },
               "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Service.Contracts\\Service.Contracts.csproj": {
                 "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Service.Contracts\\Service.Contracts.csproj"
+              },
+              "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Shared\\Shared.csproj"
               }
             }
           }
@@ -724,11 +731,7 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {
-              "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\Entities\\Entities.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
