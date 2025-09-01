@@ -1,9 +1,10 @@
 ﻿using BlogApi.Presentation.ActionFilters;
 using BlogApi.Presentation.ModelBinders;
 using Entities.LinkModels;
+using Marvin.Cache.Headers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 using Shared.RequestFeatures;
@@ -14,6 +15,7 @@ namespace BlogApi.Presentation.Controllers
     [Route("api/posts")]
     [ApiController]
     [ApiExplorerSettings(GroupName ="v1")]
+   // [ResponseCache(CacheProfileName = "120SecondsDuration")]
     public class PostsController : ControllerBase
     {
 
@@ -23,8 +25,10 @@ namespace BlogApi.Presentation.Controllers
             _service = serviceManager;
         }
 
-        [HttpGet]
+        [HttpGet(Name = "GetPosts")]
+        [HttpHead]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
+        [Authorize(Roles ="Administrator")]
         public async Task<IActionResult> GetPosts([FromQuery] PostParameter postParameter)
         {
             var linkParams = new LinkParameters(postParameter, HttpContext);
@@ -35,6 +39,8 @@ namespace BlogApi.Presentation.Controllers
         }
 
         [HttpGet("{id:guid}", Name ="PostById")]
+        [HttpCacheExpiration(CacheLocation = CacheLocation.Public, MaxAge = 60)]
+        [HttpCacheValidation(MustRevalidate = false)]
         public async Task<IActionResult> GetPost(Guid id)
         { 
             var post =await _service.PostService.GetPostAsync(id, trackChanges: false);
@@ -55,7 +61,7 @@ namespace BlogApi.Presentation.Controllers
             return Ok(post);
         }
 
-        [HttpPost]
+        [HttpPost(Name = "CreatePost")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreatePost([FromBody] PostCreationDto post)
         {
@@ -115,6 +121,13 @@ namespace BlogApi.Presentation.Controllers
 
             await _service.PostService.SaveChangesForPatchAsync(result.postToPatch, result.postEntity);
             return NoContent();
+        }
+
+        [HttpOptions]
+        public IActionResult GetPostsOptions()
+        {
+            Response.Headers.Add("Allow", "GET, OPTIONS, POST");
+            return Ok();
         }
     }
 }

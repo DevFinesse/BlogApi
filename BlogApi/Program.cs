@@ -1,3 +1,4 @@
+using AspNetCoreRateLimit;
 using BlogApi.Extensions;
 using BlogApi.Presentation.ActionFilters;
 using BlogApi.Utility;
@@ -23,7 +24,15 @@ builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.ConfigureResponseCaching();
+builder.Services.ConfigureHttpCacheHeaders();
 builder.Services.AddCustomMediaTypes();
+builder.Services.AddMemoryCache();
+builder.Services.ConfigureRateLimitOptions();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddAuthentication();
+builder.Services.ConfigureIdentity();
+builder.Services.ConfigureJWT(builder.Configuration);
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
@@ -42,6 +51,7 @@ builder.Services.AddControllers(config =>
     config.RespectBrowserAcceptHeader = true;
     config.ReturnHttpNotAcceptable =  true;
     config.InputFormatters.Insert(0, GetJsonPatchInputFormatter());
+    config.CacheProfiles.Add("120SecondsDuration", new CacheProfile { Duration = 120 });
 }).AddXmlDataContractSerializerFormatters()
 .AddCustomCSVFormatter()
     .AddApplicationPart(typeof(BlogApi.Presentation.AssemblyReference).Assembly);
@@ -80,8 +90,11 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
     ForwardedHeaders = ForwardedHeaders.All
 });
-
+app.UseIpRateLimiting();
 app.UseCors("CorsPolicy");
+app.UseResponseCaching();
+app.UseHttpCacheHeaders();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

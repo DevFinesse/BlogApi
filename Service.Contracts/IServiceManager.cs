@@ -11,5 +11,6 @@ namespace Service.Contracts
         IPostService PostService { get; }
         ICommentService CommentService { get; }
         ICategoryService CategoryService { get; }
+        IAuthenticationService AuthenticationService { get; }
     }
 }

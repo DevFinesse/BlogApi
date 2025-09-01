@@ -17,7 +17,7 @@ namespace BlogApi
             CreateMap<CommentCreationDto, Comment>();
             CreateMap<CommentUpdateDto, Comment>();
             CreateMap<PostUpdateDto, Post>().ReverseMap();
-        
+            CreateMap<UserRegistrationDto, User>();
         }
     }
 }

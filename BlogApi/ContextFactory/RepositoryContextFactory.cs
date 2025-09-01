@@ -15,8 +15,8 @@ namespace BlogApi.ContextFactory
 
             var builder = new DbContextOptionsBuilder<RepositoryContext>()
                 .UseNpgsql(configuration.GetConnectionString("sqlConnection"),
-                    b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName));
-
+                    b => b.MigrationsAssembly("Repository"));
+            
             return new RepositoryContext(builder.Options);
         }
     }
