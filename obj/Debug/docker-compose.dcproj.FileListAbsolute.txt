@@ -78,3 +78,4 @@ C:\Users\BABATUNDE\source\repos\BlogApi\bin\Debug\System.IdentityModel.Tokens.Jw
 C:\Users\BABATUNDE\source\repos\BlogApi\bin\Debug\Microsoft.IdentityModel.Protocols.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\bin\Debug\Microsoft.IdentityModel.Logging.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\BABATUNDE\source\repos\BlogApi\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll

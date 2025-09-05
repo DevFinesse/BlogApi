@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Contracts;
+using Entities.ConfigurationModels;
 using Entities.Exceptions;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Service.Contracts;
 using Shared.DataTransferObjects;
@@ -20,16 +22,18 @@ namespace Service
         private readonly IMapper _mapper;
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly IConfiguration _configuration;
+        private readonly IOptions<JwtConfiguration> _configuration;
+        private readonly JwtConfiguration _jwtConfiguration;
         private User? _user;
 
-        public AuthenticationService( ILoggerManager logger, IMapper mapper, UserManager<User> userManager, IConfiguration configuration, RoleManager<IdentityRole> roleManager)
+        public AuthenticationService( ILoggerManager logger, IMapper mapper, UserManager<User> userManager, IOptions<JwtConfiguration> configuration, RoleManager<IdentityRole> roleManager)
         {
             _logger = logger;
             _mapper = mapper;
             _userManager = userManager;
             _configuration = configuration;
             _roleManager = roleManager;
+            _jwtConfiguration = _configuration.Value;
         }
 
         public async Task<IdentityResult> RegisterUser(UserRegistrationDto userRegistration)
@@ -83,7 +87,12 @@ namespace Service
 
         private SigningCredentials GetSigningCredentials()
         {
-            var key = Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("SECRET"));
+            var secretKey = Environment.GetEnvironmentVariable("SECRET");
+            if (string.IsNullOrEmpty(secretKey))
+            {
+                secretKey = "superSecretKey@345superSecretKey@345superSecretKey@345superSecretKey@345";
+            }
+            var key = Encoding.UTF8.GetBytes(secretKey);
             var secret = new SymmetricSecurityKey(key);
 
             return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
@@ -95,8 +104,8 @@ namespace Service
             {
                 new Claim(ClaimTypes.Name, _user.UserName)
             };
-            var roles = await _userManager.GetRolesAsync(_user);
 
+            var roles = await _userManager.GetRolesAsync(_user);
             foreach(var role in roles)
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
@@ -107,14 +116,13 @@ namespace Service
 
         private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
         {
-            var jwtSettings = _configuration.GetSection("JwtSettings");
 
             var tokenOptions = new JwtSecurityToken
                 (
-                    issuer: jwtSettings["validIssuer"],
-                    audience: jwtSettings["validAudience"],
+                    issuer: _jwtConfiguration.ValidIssuer,
+                    audience: _jwtConfiguration.ValidAudience,
                     claims: claims,
-                    expires: DateTime.Now.AddMinutes(Convert.ToDouble(jwtSettings["expires"])),
+                    expires: DateTime.Now.AddMinutes(Convert.ToDouble(_jwtConfiguration.Expires)),
                     signingCredentials: signingCredentials
                 );
 
@@ -133,17 +141,22 @@ namespace Service
 
         private ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
         {
-            var jwtSettings = _configuration.GetSection("JwtSettings");
+            var secretKey = Environment.GetEnvironmentVariable("SECRET");
+            if (string.IsNullOrEmpty(secretKey))
+            {
+                // Fallback for development - in production, always set SECRET environment variable
+                secretKey = "superSecretKey@345superSecretKey@345superSecretKey@345superSecretKey@345";
+            }
 
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateAudience = true,
                 ValidateIssuer = true,
                 ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("SECRET"))),
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
                 ValidateLifetime = true,
-                ValidIssuer = jwtSettings["validIssuer"],
-                ValidAudience = jwtSettings["validAudience"]
+                ValidIssuer = _jwtConfiguration.ValidIssuer,
+                ValidAudience = _jwtConfiguration.ValidAudience
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();

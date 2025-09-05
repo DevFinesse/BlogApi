@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Contracts;
+using Entities.ConfigurationModels;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 
@@ -17,7 +19,7 @@ namespace Service
 
         public ServiceManager(IRepositoryManager repositoryManager,
             ILoggerManager logger,IMapper mapper, ISlugService slugService, 
-            IPostLinks postLinks, UserManager<User> userManager, IConfiguration configuration, RoleManager<IdentityRole> roleManager)
+            IPostLinks postLinks, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IOptions<JwtConfiguration> configuration)
         {
             _postService = new Lazy<IPostService>(() => new PostService(repositoryManager, logger, mapper, slugService, postLinks));
             _categoryService = new Lazy<ICategoryService>(() => new CategoryService(repositoryManager,logger, mapper));

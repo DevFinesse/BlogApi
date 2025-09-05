@@ -25,6 +25,13 @@ namespace BlogApi.Presentation.Controllers
             _service = serviceManager;
         }
 
+        /// <summary>
+        /// Gets the list of all posts
+        /// </summary>
+        /// <param name="postParameter"></param>
+        /// <returns>The posts list</returns>
+        /// 
+
         [HttpGet(Name = "GetPosts")]
         [HttpHead]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]

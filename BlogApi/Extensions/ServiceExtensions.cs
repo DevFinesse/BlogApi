@@ -14,6 +14,8 @@ using Entities.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Entities.ConfigurationModels;
+
 
 namespace BlogApi.Extensions
 {
@@ -54,7 +56,46 @@ namespace BlogApi.Extensions
         {
             services.AddSwaggerGen(s =>
             {
-                s.SwaggerDoc("v1", new OpenApiInfo { Title = "Isaacman Blog Api", Version = "v1" });
+                s.SwaggerDoc("v1", new OpenApiInfo 
+                {
+                    Title = "Isaacman Blog Api",
+                    Version = "v1" ,
+                    Description = "Blog Api",
+                    Contact = new OpenApiContact 
+                    { 
+                        Name = "Babatunde Isaac",
+                        Email = "babatundeisaac@icloud.com"
+                    }
+                });
+
+                //var xmlFile = $"{typeof(Presentation.AssemblyReference).Assembly.GetName().Name}.xml";
+                //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                //s.IncludeXmlComments(xmlPath);
+
+                s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Place to add JWT with Bearer",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                s.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                { 
+                    { 
+                        new OpenApiSecurityScheme 
+                        { 
+                            Reference = new OpenApiReference
+                            { 
+                                Type = ReferenceType.SecurityScheme, 
+                                Id = "Bearer" 
+                            },
+                            Name = "Bearer"
+                        },
+                        new List<string>() 
+                    } 
+                });
             });
         }
 
@@ -139,8 +180,14 @@ namespace BlogApi.Extensions
 
         public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
         {
-            var jwtSettings = configuration.GetSection("JwtSettings");
+            var jwtConfiguration = new JwtConfiguration();
+            configuration.Bind(jwtConfiguration.Section, jwtConfiguration);
+
             var secretKey = Environment.GetEnvironmentVariable("SECRET");
+            if (string.IsNullOrEmpty(secretKey))
+            {
+                secretKey = "superSecretKey@345superSecretKey@345superSecretKey@345superSecretKey@345";
+            }
 
             services.AddAuthentication(opt =>
             {
@@ -154,13 +201,17 @@ namespace BlogApi.Extensions
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = jwtSettings["validIssuer"],
-                    ValidAudience = jwtSettings["validAudience"],
+                    ValidIssuer = jwtConfiguration.ValidIssuer,
+                    ValidAudience = jwtConfiguration.ValidAudience,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                 };
             });
         }
+
+        public static void AddJwtConfiguration( this IServiceCollection services, IConfiguration configuration) =>
+            services.Configure<JwtConfiguration>(configuration.GetSection("JwtSettings"));
         
+
 
     }
 }
