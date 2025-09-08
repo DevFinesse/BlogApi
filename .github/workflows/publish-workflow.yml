@@ -22,8 +22,14 @@ jobs:
         with:
           dotnet-version: "8.0.x"
 
+      - name: Restore
+        run: dotnet restore BlogApi.sln
+
       - name: Build
-        run: dotnet build --configuration Release
+        run: dotnet build BlogApi.sln --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test BlogApi.sln --configuration Release --no-build --verbosity normal
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
