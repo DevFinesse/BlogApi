@@ -114,9 +114,9 @@ namespace Service
 
         public async Task UpdatePostAsync(Guid postId, PostUpdateDto postUpdate, bool trackChanges)
         {
-            var postEntity = await  _repository.PostRepository.GetPostAsync (postId, trackChanges) ?? throw new PostNotFoundException(postId);
-            _mapper.Map(postUpdate, postEntity);
-            // postEntity.Slug = await _slugService.GenerateUniqueSlug(postUpdate.Title, async s => await _repository.PostRepository.SlugExistsAsync(s));
+            var post = await  _repository.PostRepository.GetPostAsync (postId, trackChanges) ?? throw new PostNotFoundException(postId);
+            post.Slug = await _slugService.GenerateUniqueSlug(postUpdate.Title, async s => await _repository.PostRepository.SlugExistsAsync(s));
+            _mapper.Map(postUpdate, post);
             await _repository.SaveAsync();
         }
 

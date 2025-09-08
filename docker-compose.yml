@@ -1,29 +1,29 @@
 services:
-  blogapi:
-    container_name: blog-api
+  blogapi1:
+    container_name: blog-api1
     depends_on:
         db:
             condition: service_healthy
     build:
-      context: ./src
-      dockerfile: ../BlogApi/Dockerfile
+      context: .
+      dockerfile: BlogApi/Dockerfile
 
     networks:
         - mynetwork
 
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__SqlConnection=Host=db;Port=5432;Database=blog;Username=postgres;Password=password
+      - ConnectionStrings__SqlConnection=Host=db;Port=5432;Database=blog1;Username=postgres;Password=password
     ports:
     - "5000:5000"
     - "5001:5001"
 
   db:
      image: postgres:latest
-     container_name: blog.databse
+     container_name: blog1.database
      restart: always
      environment:
-         - POSTGRES_DB=blog
+         - POSTGRES_DB=blog1
          - POSTGRES_USER=postgres
          - POSTGRES_PASSWORD=password
      volumes:

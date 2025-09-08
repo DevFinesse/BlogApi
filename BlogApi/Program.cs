@@ -49,12 +49,13 @@ app.UseSwaggerUI(s =>
 });
 
 // Configure the HTTP request pipeline.
-app.UseHttpsRedirection();
-app.UseStaticFiles();
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
     ForwardedHeaders = ForwardedHeaders.All
 });
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
 app.UseIpRateLimiting();
 app.UseCors("CorsPolicy");
 app.UseResponseCaching();

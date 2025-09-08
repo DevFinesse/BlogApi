@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ba1v4JAF8ao=",
+  "dgSpecHash": "7fULQL3l09Q=",
   "success": true,
-  "projectFilePath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\blogapi\\BlogApi.csproj",
+  "projectFilePath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\BlogApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BABATUNDE\\.nuget\\packages\\asp.versioning.abstractions\\8.1.0\\asp.versioning.abstractions.8.1.0.nupkg.sha512",
     "C:\\Users\\BABATUNDE\\.nuget\\packages\\asp.versioning.http\\8.1.0\\asp.versioning.http.8.1.0.nupkg.sha512",

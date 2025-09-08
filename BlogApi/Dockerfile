@@ -24,13 +24,13 @@ COPY ["Repository/Repository.csproj", "Repository/"]
 COPY ["Service/Service.csproj", "Service/"]
 RUN dotnet restore "./BlogApi/BlogApi.csproj"
 COPY . .
-WORKDIR "/src/."
-RUN dotnet build "./BlogApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src"
+RUN dotnet build "./BlogApi/BlogApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./BlogApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./BlogApi/BlogApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
