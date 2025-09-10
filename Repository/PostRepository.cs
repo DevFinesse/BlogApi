@@ -38,7 +38,7 @@ namespace Repository
 
         public async Task<Post> GetPostAsync(Guid postId, bool trackChanges)
         {
-            return await FindByCondition(p => p.Id.Equals(postId), trackChanges).SingleOrDefaultAsync();
+            return await FindByCondition(p => p.Id.Equals(postId), trackChanges).Include(c => c.Comments).SingleOrDefaultAsync();
         }
 
         public async Task<Post> GetPostBySlugAsync(string slug, bool trackChanges)

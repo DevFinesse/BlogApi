@@ -188,3 +188,4 @@ C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\obj\Debug\net8.0\refint\BlogApi.
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\obj\Debug\net8.0\BlogApi.pdb
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\obj\Debug\net8.0\BlogApi.genruntimeconfig.cache
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\obj\Debug\net8.0\ref\BlogApi.dll
+C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
