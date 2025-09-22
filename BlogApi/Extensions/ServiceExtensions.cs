@@ -64,7 +64,7 @@ namespace BlogApi.Extensions
 
                 opts.UseNpgsql(conn, b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName));
             });
-        //b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName)));
+                //b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName)));
 
         public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
             builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));
