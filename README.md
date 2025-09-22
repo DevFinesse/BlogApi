@@ -133,4 +133,4 @@ Utility classes produce shaped responses and link generation for HATEOAS. See `P
 Open issues or PRs. Keep changes small and targeted.
 
 ## License
-Specify license here.
+MIT
