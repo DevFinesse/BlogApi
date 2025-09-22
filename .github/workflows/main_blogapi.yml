@@ -24,10 +24,10 @@ jobs:
         run: dotnet restore BlogApi.sln
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build BlogApi.sln --configuration Release --no-restore
 
       - name: Publish app
-        run: dotnet publish -c Release -o ./publish
+        run: dotnet publish BlogApi.sln -c Release -o ./publish
 
       - name: Upload artifact for deployment
         uses: actions/upload-artifact@v4
