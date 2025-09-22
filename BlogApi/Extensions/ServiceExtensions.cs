@@ -46,8 +46,25 @@ namespace BlogApi.Extensions
 
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<RepositoryContext>(opts =>
-                opts.UseNpgsql(configuration.GetConnectionString("sqlConnection"),
-                    b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName)));
+            {
+                // Read connection string from configuration or environment (Azure App Settings)
+                var conn = configuration.GetConnectionString("sqlConnection")
+                           ?? Environment.GetEnvironmentVariable("ConnectionStrings__sqlConnection");
+
+                if (string.IsNullOrWhiteSpace(conn))
+                    throw new InvalidOperationException("Connection string 'sqlConnection' is not set. Set __ConnectionStrings__sqlConnection__ in Azure App Settings.");
+
+                // Ensure SSL is enabled for Supabase and allow trust if certificate validation fails
+                if (!conn.Contains("Ssl Mode", StringComparison.OrdinalIgnoreCase) &&
+                    !conn.Contains("SslMode", StringComparison.OrdinalIgnoreCase) &&
+                    !conn.Contains("sslmode", StringComparison.OrdinalIgnoreCase))
+                {
+                    conn = conn.TrimEnd(';') + ";Ssl Mode=Require;Trust Server Certificate=true";
+                }
+
+                opts.UseNpgsql(conn, b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName));
+            });
+        //b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName)));
 
         public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
             builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));

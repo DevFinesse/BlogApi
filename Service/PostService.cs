@@ -35,7 +35,7 @@ namespace Service
             
             
             var postsDto = _mapper.Map<IEnumerable<PostDto>>(postsWithMetadata);
-            var links = _postLinks.TryGenerateLinks(postsDto, linkParameters.PostParameter.Fields, linkParameters.Context);
+            var links = _postLinks.TryGenerateLinks(postsDto, linkParameters.PostParameter.Fields!, linkParameters.Context);
             return (linkResponse: links, metaData: postsWithMetadata.MetaData);
         }
 
@@ -58,7 +58,7 @@ namespace Service
         public async Task<PostDto> CreatePostAsync(PostCreationDto post)
         {
             var postEntity = _mapper.Map<Post>(post);
-            postEntity.Slug = await _slugService.GenerateUniqueSlug(post.Title, async s => await _repository.PostRepository.SlugExistsAsync(s));
+            postEntity.Slug = await _slugService.GenerateUniqueSlug(post.Title!, async s => await _repository.PostRepository.SlugExistsAsync(s));
             _repository.PostRepository.CreatePost(postEntity);
             await _repository.SaveAsync();
 
@@ -93,7 +93,7 @@ namespace Service
             var postEntities = _mapper.Map<IEnumerable<Post>>(postCollection);
             foreach(var post in postEntities)
             {
-                post.Slug = await _slugService.GenerateUniqueSlug(post.Title, async s => await _repository.PostRepository.SlugExistsAsync(s));
+                post.Slug = await _slugService.GenerateUniqueSlug(post.Title!, async s => await _repository.PostRepository.SlugExistsAsync(s));
                 _repository.PostRepository.CreatePost(post);
             }
 
@@ -115,7 +115,7 @@ namespace Service
         public async Task UpdatePostAsync(Guid postId, PostUpdateDto postUpdate, bool trackChanges)
         {
             var post = await  _repository.PostRepository.GetPostAsync (postId, trackChanges) ?? throw new PostNotFoundException(postId);
-            post.Slug = await _slugService.GenerateUniqueSlug(postUpdate.Title, async s => await _repository.PostRepository.SlugExistsAsync(s));
+            post.Slug = await _slugService.GenerateUniqueSlug(postUpdate.Title!, async s => await _repository.PostRepository.SlugExistsAsync(s));
             _mapper.Map(postUpdate, post);
             await _repository.SaveAsync();
         }

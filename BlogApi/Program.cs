@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Options;
 using NLog;
+using Repository;
 
 
 
@@ -39,9 +40,19 @@ app.ConfigureExceptionHandler(logger);
 if (app.Environment.IsProduction())
     app.UseHsts();
 
-if (app.Environment.IsDevelopment())
-    app.ApplyMigrations();
-
+//if (app.Environment.IsDevelopment())
+//await app.ApplyMigrationsAsync<RepositoryContext>();
+// Change the variable name in the catch block to avoid shadowing the outer 'logger'
+try
+{
+    await app.ApplyMigrationsAsync<RepositoryContext>();
+}
+catch (Exception ex)
+{
+    var migrationLogger = app.Services.GetRequiredService<ILoggerManager>();
+    migrationLogger.LogError($"Database migration failed on startup: {ex.Message}");
+    // do not rethrow - service can still start (adjust policy as needed)
+}
 app.UseSwagger();
 app.UseSwaggerUI(s =>
 {
@@ -63,4 +74,5 @@ app.UseHttpCacheHeaders();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
 app.Run();

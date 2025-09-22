@@ -3,14 +3,26 @@ using Repository;
 
 namespace BlogApi.Extensions
 {
-    public static class MigrationExtensions
+    internal static class MigrationExtensions
     {
-        public static void ApplyMigrations(this IApplicationBuilder app) 
-        { 
-            using IServiceScope scope = app.ApplicationServices.CreateScope();
+        internal static async Task ApplyMigrationsAsync<TContext>(
+        this IHost host,
+        CancellationToken cancellationToken = default) where TContext : DbContext
+        {
+            using IServiceScope scope = host.Services.CreateScope();
+            ILogger<TContext> logger = scope.ServiceProvider.GetRequiredService<ILogger<TContext>>();
 
-            using RepositoryContext dbContext = scope.ServiceProvider.GetRequiredService<RepositoryContext>();
-            dbContext.Database.Migrate();
+            try
+            {
+                TContext context = scope.ServiceProvider.GetRequiredService<TContext>();
+                await context.Database.MigrateAsync(cancellationToken);
+                logger.LogInformation("Database migrations applied successfully");
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "An error occurred while applying database migrations");
+                throw;
+            }
         }
     }
 }
