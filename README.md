@@ -2,6 +2,8 @@
 
 A feature-rich ASP.NET Core Web API for a blogging platform using layered architecture (Presentation, Service, Repository, Entities, Contracts, Shared). The project follows Repository and Service patterns, AutoMapper, and EF Core with PostgreSQL. Docker and health checks are included.
 
+URL: https://url-shortener.me/5K3A
+
 ## Table of Contents
 - About
 - Architecture
@@ -124,10 +126,15 @@ The `Comment` entity supports `ParentCommentId`, `ParentComment`, and `Replies` 
 ### Data shaping & HATEOAS links
 Utility classes produce shaped responses and link generation for HATEOAS. See `PostLinks` for example.
 
-## Troubleshooting
-- "Unable to cast object of type 'System.Net.Http.Headers.MediaTypeHeaderValue'...": ensure you use `Microsoft.Net.Http.Headers.MediaTypeHeaderValue` consistently when referencing media types in link utilities. Import correct namespace.
-- `.vs` files causing git issues: add `.vs/` to `.gitignore` and remove from git index: `git rm -r --cached .vs`.
-- Migrations assembly mismatch: set `MigrationsAssembly` in `AddDbContext` or use `--project/--startup-project` flags with `dotnet ef`.
+### Other Features
+- Rate Limiting
+- JWT
+- Identity
+- Refresh Token
+- Role Based Authorization
+- Searching , Filtering, Paging
+- Root Document
+- Swagger Documentation
 
 ## Contributing
 Open issues or PRs. Keep changes small and targeted.
