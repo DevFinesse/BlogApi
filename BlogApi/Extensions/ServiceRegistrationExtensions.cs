@@ -22,8 +22,6 @@ namespace BlogApi.Extensions
             services.ConfigureRepositoryManager();
             services.ConfigureServiceManager();
             services.ConfigureSqlContext(configuration);
-            services.ConfigureResponseCaching();
-            services.ConfigureHttpCacheHeaders();
             services.AddCustomMediaTypes();
             services.AddMemoryCache();
             services.ConfigureRateLimitOptions();

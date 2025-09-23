@@ -55,12 +55,12 @@ namespace BlogApi.Extensions
                     throw new InvalidOperationException("Connection string 'sqlConnection' is not set. Set __ConnectionStrings__sqlConnection__ in Azure App Settings.");
 
                 // Ensure SSL is enabled for Supabase and allow trust if certificate validation fails
-                if (!conn.Contains("Ssl Mode", StringComparison.OrdinalIgnoreCase) &&
-                    !conn.Contains("SslMode", StringComparison.OrdinalIgnoreCase) &&
-                    !conn.Contains("sslmode", StringComparison.OrdinalIgnoreCase))
-                {
-                    conn = conn.TrimEnd(';') + ";Ssl Mode=Require;Trust Server Certificate=true";
-                }
+               // if (!conn.Contains("Ssl Mode", StringComparison.OrdinalIgnoreCase) &&
+                 //   !conn.Contains("SslMode", StringComparison.OrdinalIgnoreCase) &&
+                   // !conn.Contains("sslmode", StringComparison.OrdinalIgnoreCase))
+                //{
+                  //  conn = conn.TrimEnd(';') + ";Ssl Mode=Require;Trust Server Certificate=true";
+                //}
 
                 opts.UseNpgsql(conn, b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName));
             });
@@ -140,22 +140,6 @@ namespace BlogApi.Extensions
             });
         }
 
-        public static void ConfigureResponseCaching(this IServiceCollection services) =>
-            services.AddResponseCaching();
-
-        public static void ConfigureHttpCacheHeaders(this IServiceCollection services) =>
-            services.AddHttpCacheHeaders(
-                    (expirationOpt) =>
-                    {
-                        expirationOpt.MaxAge = 65;
-                        expirationOpt.CacheLocation = CacheLocation.Private;
-                    },
-                    (validationOpt) =>
-                    {
-                        validationOpt.MustRevalidate = true;
-                    }
-                );
-
         public static void ConfigureRateLimitOptions(this IServiceCollection services)
         {
             var rateLimitRules = new List<RateLimitRule>
@@ -164,7 +148,7 @@ namespace BlogApi.Extensions
                 new RateLimitRule
                 {
                     Endpoint =  "*",
-                    Limit = 30,
+                    Limit = 15,
                     Period = "5m"
                 }
             };

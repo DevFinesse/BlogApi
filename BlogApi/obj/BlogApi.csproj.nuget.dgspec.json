@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\BlogApi.csproj": {}
+    "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\blogapi\\BlogApi.csproj": {}
   },
   "projects": {
     "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi.Presentation\\BlogApi.Presentation.csproj": {
@@ -96,14 +96,14 @@
         }
       }
     },
-    "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\BlogApi.csproj": {
+    "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\blogapi\\BlogApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\BlogApi.csproj",
+        "projectUniqueName": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\blogapi\\BlogApi.csproj",
         "projectName": "BlogApi",
-        "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\BlogApi.csproj",
+        "projectPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\blogapi\\BlogApi.csproj",
         "packagesPath": "C:\\Users\\BABATUNDE\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi\\obj\\",
+        "outputPath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\blogapi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

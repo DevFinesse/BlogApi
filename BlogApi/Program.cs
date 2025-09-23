@@ -40,9 +40,6 @@ app.ConfigureExceptionHandler(logger);
 if (app.Environment.IsProduction())
     app.UseHsts();
 
-//if (app.Environment.IsDevelopment())
-//await app.ApplyMigrationsAsync<RepositoryContext>();
-// Change the variable name in the catch block to avoid shadowing the outer 'logger'
 try
 {
     await app.ApplyMigrationsAsync<RepositoryContext>();
@@ -69,8 +66,6 @@ app.UseStaticFiles();
 
 app.UseIpRateLimiting();
 app.UseCors("CorsPolicy");
-app.UseResponseCaching();
-app.UseHttpCacheHeaders();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
