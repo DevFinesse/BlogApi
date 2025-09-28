@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "abNGe9EYwEI=",
+  "dgSpecHash": "VFRWpxsDb9s=",
   "success": true,
   "projectFilePath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\BlogApi.Presentation\\BlogApi.Presentation.csproj",
   "expectedPackageFiles": [
@@ -86,10 +86,7 @@
     "C:\\Users\\BABATUNDE\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
     "C:\\Users\\BABATUNDE\\.nuget\\packages\\system.threading\\4.0.11\\system.threading.4.0.11.nupkg.sha512",
     "C:\\Users\\BABATUNDE\\.nuget\\packages\\system.threading.tasks\\4.0.11\\system.threading.tasks.4.0.11.nupkg.sha512",
-    "C:\\Users\\BABATUNDE\\.nuget\\packages\\system.threading.tasks.extensions\\4.6.0\\system.threading.tasks.extensions.4.6.0.nupkg.sha512",
-    "C:\\Users\\BABATUNDE\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.20\\microsoft.netcore.app.ref.8.0.20.nupkg.sha512",
-    "C:\\Users\\BABATUNDE\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.20\\microsoft.windowsdesktop.app.ref.8.0.20.nupkg.sha512",
-    "C:\\Users\\BABATUNDE\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.20\\microsoft.aspnetcore.app.ref.8.0.20.nupkg.sha512"
+    "C:\\Users\\BABATUNDE\\.nuget\\packages\\system.threading.tasks.extensions\\4.6.0\\system.threading.tasks.extensions.4.6.0.nupkg.sha512"
   ],
   "logs": []
 }

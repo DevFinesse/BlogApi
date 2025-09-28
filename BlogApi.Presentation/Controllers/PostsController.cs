@@ -28,7 +28,7 @@ namespace BlogApi.Presentation.Controllers
         [HttpGet(Name = "GetPosts")]
         [HttpHead]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetPosts([FromQuery] PostParameter postParameter)
         {
             var linkParams = new LinkParameters(postParameter, HttpContext);

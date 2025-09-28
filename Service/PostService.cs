@@ -41,7 +41,7 @@ namespace Service
 
         public async Task<PostDto> GetPostAsync(Guid id, bool trackChanges)
         {
-            var post =  await _repository.PostRepository.GetPostAsync(id, trackChanges);
+            var post =  await _repository.PostRepository.GetPostAsync(id, trackChanges) ?? throw new PostNotFoundException(id);
             var category = await _repository.CategoryRepository.GetCategoryAsync(post.CategoryId, trackChanges);
             post.Category = category;
             var postDto = _mapper.Map<PostDto>(post);
@@ -50,7 +50,7 @@ namespace Service
 
         public async Task<PostDto> GetPostBySlugAsync(string slug, bool trackChanges)
         {
-            var post = await _repository.PostRepository.GetPostBySlugAsync(slug, trackChanges);
+            var post = await _repository.PostRepository.GetPostBySlugAsync(slug, trackChanges) ?? throw new Exception("Post not found");
             var postDto = _mapper.Map<PostDto>(post);
             return postDto;
         }

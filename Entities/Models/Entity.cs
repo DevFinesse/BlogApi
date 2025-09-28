@@ -14,7 +14,7 @@ public class Entity : DynamicObject, IXmlSerializable, IDictionary<string, objec
 
     public Entity()
     {
-        _expando = new ExpandoObject();
+        _expando = new ExpandoObject()!;
     }
 
     public override bool TryGetMember(GetMemberBinder binder, out object result)
