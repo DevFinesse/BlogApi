@@ -44,9 +44,15 @@ namespace BlogApi.Presentation.Controllers
         [HttpGet("threaded")]
         public async Task<IActionResult> GetThreadedComments(Guid postId) 
         {
-            
             var comments = await _service.CommentService.GetThreadedCommentsAsync(postId, trackChanges: false); 
             return Ok(comments);
+        }
+
+        [HttpGet("{id:Guid}/replies")]
+        public async Task<IActionResult> GetCommentReplies(Guid postId, Guid id)
+        {
+            var comment = await _service.CommentService.GetCommentAsync(postId, id, trackChanges: false);
+            return Ok(comment.Replies);
         }
 
         [HttpDelete]

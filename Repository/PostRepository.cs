@@ -43,7 +43,7 @@ namespace Repository
 
         public async Task<Post> GetPostBySlugAsync(string slug, bool trackChanges)
         {
-            return await FindByCondition(p => p.Slug.Equals(slug), trackChanges).SingleOrDefaultAsync();
+            return await FindByCondition(p => p.Slug!.Equals(slug), trackChanges).SingleOrDefaultAsync();
         }
 
         

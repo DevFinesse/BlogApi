@@ -8,15 +8,17 @@ namespace Entities.Models
     {
         [Column("CommentId")]
         public Guid Id { get; set; }
-        //comment text,author ID, post ID,timestamp,parent comment  ID(threaded reply)
 
         [Required(ErrorMessage ="Content cannot be empty")]
+        [MaxLength(1000, ErrorMessage = "Content cannot exceed 1000 characters")]
         public string? Content { get; set; }
         public DateTimeOffset? CreatedAt { get; set; } = DateTimeOffset.UtcNow;
         public DateTimeOffset? LastUpdatedAt { get; set; }
+        
+        [ForeignKey(nameof(ParentComment))]
         public Guid? ParentCommentId { get; set; } 
-        public Comment? ParentComment { get; set; } //navigation to comment
-        public ICollection<Comment>? Replies { get; set; } //children comment
+        public Comment? ParentComment { get; set; }
+        public ICollection<Comment>? Replies { get; set; }
 
         [ForeignKey(nameof(Post))]
         public Guid PostId { get; set; }

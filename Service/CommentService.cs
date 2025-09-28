@@ -26,7 +26,7 @@ namespace Service
             var post = await _repository.PostRepository.GetPostAsync(postId, trackChanges) ?? throw new PostNotFoundException(postId);
             var commentsWithMetadata = await _repository.CommentRepository.GetCommentsAsync(postId, commentParameters, trackChanges);
             var commentsDto = _mapper.Map<IEnumerable<CommentDto>>(commentsWithMetadata);   
-            return (comments: commentsDto, metaData: commentsWithMetadata.MetaData);
+            return (comments: BuildCommentTree(commentsDto), metaData: commentsWithMetadata.MetaData);
         }
 
         public async Task<CommentDto> GetCommentAsync(Guid postId, Guid id, bool trackChanges) 
@@ -34,14 +34,13 @@ namespace Service
             var post = await _repository.PostRepository.GetPostAsync(postId, trackChanges) ?? throw new PostNotFoundException(postId);
             var commentFromDb = await _repository.CommentRepository.GetCommentAsync(postId, id, trackChanges) ?? throw new CommentNotFoundException(id);
             var commentDto = _mapper.Map<CommentDto>(commentFromDb);
-            return commentDto;
+            return  commentDto;
         }
 
         public async Task<CommentDto> CreateCommentForPostAsync(Guid postId, CommentCreationDto commentCreationDto, bool trackChanges)
         {
             var post = await _repository.PostRepository.GetPostAsync(postId, trackChanges) ?? throw new PostNotFoundException(postId);
             
-            // Check if this is a reply to another comment
             if (commentCreationDto.ParentCommentId.HasValue)
             {
                 var parentComment = await _repository.CommentRepository.GetCommentAsync(postId, commentCreationDto.ParentCommentId.Value, trackChanges) 
@@ -57,9 +56,44 @@ namespace Service
 
         public async Task<IEnumerable<CommentDto>> GetThreadedCommentsAsync(Guid postId, bool trackChanges)
         {
-            var comments = await _repository.CommentRepository.GetThreadedCommentsAsync(postId, trackChanges);
-            var commentDto = _mapper.Map<IEnumerable<CommentDto>>(comments);
-            return commentDto;
+            var allComments = await _repository.CommentRepository.GetCommentsAsync(postId, new CommentParameters { PageNumber = 1, PageSize = int.MaxValue }, trackChanges);
+            var allCommentDtos = _mapper.Map<IEnumerable<CommentDto>>(allComments);
+            
+            return BuildCommentTree(allCommentDtos);
+        }
+
+        private IEnumerable<CommentDto> BuildCommentTree(IEnumerable<CommentDto> allComments)
+        {
+            var commentDict = allComments.ToDictionary(c => c.Id);
+            var rootComments = new List<CommentDto>();
+
+            foreach (var comment in allComments)
+            {
+                if (comment.ParentCommentId == null)
+                {
+                    rootComments.Add(comment);
+                }
+            }
+
+            return rootComments.Select(rootComment => BuildCommentWithMetrics(rootComment, commentDict, 0));
+        }
+
+
+        private CommentDto BuildCommentWithMetrics(CommentDto comment, Dictionary<Guid, CommentDto> commentDict, int depth)
+        {
+            var replies = commentDict.Values
+                .Where(c => c.ParentCommentId == comment.Id)
+                .Select(reply => BuildCommentWithMetrics(reply, commentDict, depth + 1))
+                .ToList();
+
+            var totalReplyCount = replies.Count + replies.Sum(r => r.ReplyCount);
+
+            return comment with 
+            { 
+                Depth = depth,
+                ReplyCount = totalReplyCount,
+                Replies = replies.Any() ? replies : null
+            };
         }
 
         public async Task DeleteCommentForPostAsync(Guid postId, Guid id, bool trackChanges)

@@ -17,6 +17,17 @@ A feature-rich ASP.NET Core Web API for a blogging platform using layered archit
   - Threaded comments
   - Slug generation
   - Data shaping & HATEOAS links
+- API Endpoints
+  - Authentication Endpoints
+  - Token Management
+  - Root API
+  - Posts Endpoints
+  - Categories Endpoints
+  - Comments Endpoints
+  - Content Negotiation
+  - Pagination
+  - Authentication
+  - Rate Limiting
 - Testing
 - Troubleshooting
 - Contributing
@@ -123,6 +134,101 @@ The `Comment` entity supports `ParentCommentId`, `ParentComment`, and `Replies` 
 
 ### Data shaping & HATEOAS links
 Utility classes produce shaped responses and link generation for HATEOAS. See `PostLinks` for example.
+
+## API Endpoints
+
+### Authentication Endpoints (`/api/authentication`)
+
+| Method | Endpoint | Description | Request Body | Response |
+|--------|----------|-------------|--------------|----------|
+| POST | `/api/authentication` | Register a new user | `UserRegistrationDto` | 201 Created / 400 Bad Request |
+| POST | `/api/authentication/login` | Authenticate user and get JWT token | `UserAuthenticationDto` | 200 OK (TokenDto) / 401 Unauthorized |
+
+### Token Management (`/api/token`)
+
+| Method | Endpoint | Description | Request Body | Response |
+|--------|----------|-------------|--------------|----------|
+| POST | `/api/token/refresh` | Refresh JWT access token | `TokenDto` | 200 OK (TokenDto) / 400 Bad Request |
+
+### Root API (`/api`)
+
+| Method | Endpoint | Description | Headers | Response |
+|--------|----------|-------------|---------|----------|
+| GET | `/api` | Get API root with HATEOAS links | `Accept: application/vnd.isaacman.apiroot` | 200 OK (Link[]) / 204 No Content |
+
+### Posts Endpoints (`/api/posts`)
+
+| Method | Endpoint | Description | Query Parameters | Headers | Response |
+|--------|----------|-------------|------------------|---------|----------|
+| GET | `/api/posts` | Get all posts with pagination and HATEOAS | `PostParameter` | `Accept: application/vnd.isaacman.hateoas+json` | 200 OK (PostDto[]) |
+| HEAD | `/api/posts` | Get posts headers only | `PostParameter` | - | 200 OK |
+| GET | `/api/posts/{id:guid}` | Get post by ID | - | - | 200 OK (PostDto) / 404 Not Found |
+| GET | `/api/posts/collection/({ids})` | Get multiple posts by IDs | - | - | 200 OK (PostDto[]) |
+| GET | `/api/posts/{slug}` | Get post by slug | - | - | 200 OK (PostDto) / 404 Not Found |
+| POST | `/api/posts` | Create new post | - | - | 201 Created / 400 Bad Request |
+| POST | `/api/posts/collection` | Create multiple posts | - | - | 201 Created (PostCollectionDto) |
+| DELETE | `/api/posts/{id:guid}` | Delete post | - | - | 204 No Content / 404 Not Found |
+| PUT | `/api/posts/{id:guid}` | Update entire post | - | - | 204 No Content / 400 Bad Request |
+| PATCH | `/api/posts/{id:guid}` | Partially update post | - | - | 204 No Content / 400 Bad Request |
+| GET | `/api/posts/category` | Get posts by category | `categoryId` | - | 200 OK (PostDto[]) |
+| OPTIONS | `/api/posts` | Get allowed HTTP methods | - | - | 200 OK |
+
+### Categories Endpoints (`/api/categories`)
+
+| Method | Endpoint | Description | Request Body | Response |
+|--------|----------|-------------|--------------|----------|
+| GET | `/api/categories` | Get all categories | - | 200 OK (CategoryDto[]) |
+| GET | `/api/categories/{id:Guid}` | Get category by ID | - | 200 OK (CategoryDto) / 404 Not Found |
+| POST | `/api/categories` | Create new category | `CategoryCreationDto` | 200 OK / 400 Bad Request |
+| DELETE | `/api/categories/{id:guid}` | Delete category | - | 204 No Content / 404 Not Found |
+| PUT | `/api/categories/{id:guid}` | Update category | `CategoryUpdateDto` | 204 No Content / 400 Bad Request |
+
+### Comments Endpoints (`/api/posts/{postId}/comments`)
+
+| Method | Endpoint | Description | Query Parameters | Request Body | Response |
+|--------|----------|-------------|------------------|--------------|----------|
+| GET | `/api/posts/{postId}/comments` | Get paginated comments for post | `CommentParameters` | - | 200 OK (CommentDto[]) |
+| GET | `/api/posts/{postId}/comments/{id:Guid}` | Get specific comment | - | - | 200 OK (CommentDto) / 404 Not Found |
+| POST | `/api/posts/{postId}/comments` | Create comment for post | - | `CommentCreationDto` | 200 OK (CommentDto) / 400 Bad Request |
+| GET | `/api/posts/{postId}/comments/threaded` | Get threaded comments hierarchy | - | - | 200 OK (CommentDto[]) |
+| GET | `/api/posts/{postId}/comments/{id:Guid}/replies` | Get comment replies | - | - | 200 OK (CommentDto[]) |
+| DELETE | `/api/posts/{postId}/comments` | Delete comment | `id` | - | 204 No Content / 404 Not Found |
+| PUT | `/api/posts/{postId}/comments/{id:guid}` | Update comment | - | `CommentUpdateDto` | 204 No Content / 400 Bad Request |
+
+### Content Negotiation
+
+The API supports multiple content types:
+
+- **JSON**: `application/json` (default)
+- **Custom JSON**: `application/vnd.isaacman.hateoas+json`, `application/vnd.isaacman+json`
+- **XML**: `application/xml`
+- **CSV**: `text/csv` (posts only)
+- **HATEOAS Root**: `application/vnd.isaacman.apiroot`
+
+### Pagination
+
+Posts and comments endpoints support pagination with the following query parameters:
+
+- `pageNumber` (int): Page number (default: 1)
+- `pageSize` (int): Items per page (default: 10)
+- `fields` (string): Comma-separated list of fields to return
+- `orderBy` (string): Field to sort by
+
+Response includes `X-Pagination` header with metadata.
+
+### Authentication
+
+The API uses JWT Bearer token authentication:
+
+1. Register user via `/api/authentication`
+2. Login via `/api/authentication/login` to get access and refresh tokens
+3. Include `Authorization: Bearer {access_token}` header in protected requests
+4. Refresh tokens via `/api/token/refresh` when access token expires
+
+### Rate Limiting
+
+- **Limit**: 15 requests per 30 minutes per IP address
+- **Headers**: Rate limit information included in response headers
 
 ## Troubleshooting
 - "Unable to cast object of type 'System.Net.Http.Headers.MediaTypeHeaderValue'...": ensure you use `Microsoft.Net.Http.Headers.MediaTypeHeaderValue` consistently when referencing media types in link utilities. Import correct namespace.

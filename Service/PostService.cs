@@ -136,7 +136,15 @@ namespace Service
 
         public async Task SaveChangesForPatchAsync(PostUpdateDto postToPatch, Post postEntity)
         {
+            var originalTitle = postEntity.Title;
+            
             _mapper.Map(postToPatch, postEntity);
+            
+            if (originalTitle != postEntity.Title)
+            {
+                postEntity.Slug = await _slugService.GenerateUniqueSlug(postEntity.Title!, async s => await _repository.PostRepository.SlugExistsAsync(s));
+            }
+            
             await _repository.SaveAsync();
         }
     }

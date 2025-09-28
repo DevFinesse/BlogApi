@@ -38,33 +38,11 @@ namespace Repository
 
         public async Task<IEnumerable<Comment>> GetThreadedCommentsAsync(Guid postId, bool trackChanges)
         { 
-            // Start with root comments (no parent)
-            var query = FindByCondition(c => c.PostId.Equals(postId) && c.ParentCommentId == null, trackChanges);
-            
-            // Recursively include all nested replies
-            var comments = LoadRepliesRecursively(query);
-            
-            return await comments.OrderByDescending(c => c.CreatedAt).ToListAsync();
-        }
+            var allComments = await FindByCondition(c => c.PostId.Equals(postId), trackChanges)
+                .OrderBy(c => c.CreatedAt)
+                .ToListAsync();
 
-        private IQueryable<Comment> LoadRepliesRecursively(IQueryable<Comment> query)
-        {
-            // Load immediate replies
-            query = query.Include(c => c.Replies);
-            
-            // Get all replies
-            var replies = query.SelectMany(c => c.Replies);
-            
-            // If there are replies, recursively load their replies too
-            if (replies.Any())
-            {
-                var replyQuery = RepositoryContext.Comments
-                    .Where(c => replies.Select(r => r.Id).Contains(c.Id));
-                    
-                LoadRepliesRecursively(replyQuery);
-            }
-            
-            return query;
+            return allComments.Where(c => c.ParentCommentId == null);
         }
 
         public void DeleteComment(Comment comment)

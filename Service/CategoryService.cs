@@ -22,7 +22,6 @@ namespace Service
 
         public async Task<CategoryDto> CreateCategoryAsync(CategoryCreationDto category, bool trackChanges)
         {
-            //var categoryEntity = _mapper.Map<Category>(category);
             Category categoryEntity = new()
             {
                 Name = category.Name
@@ -34,7 +33,6 @@ namespace Service
             {
                 Name = categoryEntity.Name
             }; 
-            //var categoryToReturn = _mapper.Map<CategoryDto>(categoryEntity);
 
             return categoryToReturn;
         }

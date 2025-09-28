@@ -144,7 +144,6 @@ namespace Service
             var secretKey = Environment.GetEnvironmentVariable("SECRET");
             if (string.IsNullOrEmpty(secretKey))
             {
-                // Fallback for development - in production, always set SECRET environment variable
                 secretKey = "superSecretKey@345superSecretKey@345superSecretKey@345superSecretKey@345";
             }
 

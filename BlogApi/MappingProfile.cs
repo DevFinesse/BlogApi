@@ -11,7 +11,9 @@ namespace BlogApi
             CreateMap<Category, CategoryDto>();
             CreateMap<CategoryCreationDto, Category>();
             CreateMap<CategoryUpdateDto, Category>();
-            CreateMap<Comment, CommentDto>();
+            CreateMap<Comment, CommentDto>()
+                .ForMember(dest => dest.Depth, opt => opt.Ignore())
+                .ForMember(dest => dest.ReplyCount, opt => opt.Ignore());
             CreateMap<Post, PostDto>();
             CreateMap<PostCreationDto, Post>().ForMember(dest => dest.Slug, opt => opt.Ignore());
             CreateMap<CommentCreationDto, Comment>();

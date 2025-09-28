@@ -13,7 +13,6 @@ C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\Asp.Versioning.
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\AspNetCoreRateLimit.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\AutoMapper.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\Humanizer.dll
-C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\Marvin.Cache.Headers.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
@@ -188,3 +187,4 @@ C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\obj\Debug\net8.0\refint\BlogApi.
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\obj\Debug\net8.0\BlogApi.pdb
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\obj\Debug\net8.0\BlogApi.genruntimeconfig.cache
 C:\Users\BABATUNDE\source\repos\BlogApi\BlogApi\obj\Debug\net8.0\ref\BlogApi.dll
+C:\Users\BABATUNDE\source\repos\BlogApi\blogapi\obj\Debug\net8.0\swae.build.ex.cache

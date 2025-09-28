@@ -7,7 +7,6 @@ using Microsoft.OpenApi.Models;
 using Repository;
 using Service;
 using Service.Contracts;
-using Marvin.Cache.Headers;
 using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Identity;
 using Entities.Models;
@@ -47,24 +46,14 @@ namespace BlogApi.Extensions
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<RepositoryContext>(opts =>
             {
-                // Read connection string from configuration or environment (Azure App Settings)
                 var conn = configuration.GetConnectionString("sqlConnection")
                            ?? Environment.GetEnvironmentVariable("ConnectionStrings__sqlConnection");
 
                 if (string.IsNullOrWhiteSpace(conn))
                     throw new InvalidOperationException("Connection string 'sqlConnection' is not set. Set __ConnectionStrings__sqlConnection__ in Azure App Settings.");
 
-                // Ensure SSL is enabled for Supabase and allow trust if certificate validation fails
-               // if (!conn.Contains("Ssl Mode", StringComparison.OrdinalIgnoreCase) &&
-                 //   !conn.Contains("SslMode", StringComparison.OrdinalIgnoreCase) &&
-                   // !conn.Contains("sslmode", StringComparison.OrdinalIgnoreCase))
-                //{
-                  //  conn = conn.TrimEnd(';') + ";Ssl Mode=Require;Trust Server Certificate=true";
-                //}
-
                 opts.UseNpgsql(conn, b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName));
             });
-                //b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName)));
 
         public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
             builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));
@@ -84,10 +73,6 @@ namespace BlogApi.Extensions
                         Email = "babatundeisaac@icloud.com"
                     }
                 });
-
-                //var xmlFile = $"{typeof(Presentation.AssemblyReference).Assembly.GetName().Name}.xml";
-                //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                //s.IncludeXmlComments(xmlPath);
 
                 s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
@@ -119,14 +104,14 @@ namespace BlogApi.Extensions
         public static void AddCustomMediaTypes(this IServiceCollection services) 
         { 
             services.PostConfigure<MvcOptions>(config => {
-                var systemTextJsonOutputFormatter = config.OutputFormatters
-                    .OfType<SystemTextJsonOutputFormatter>()
+                var newtonsoftJsonOutputFormatter = config.OutputFormatters
+                    .OfType<NewtonsoftJsonOutputFormatter>()
                     .FirstOrDefault();
 
-                if (systemTextJsonOutputFormatter != null)
+                if (newtonsoftJsonOutputFormatter is not null)
                 {
-                    systemTextJsonOutputFormatter.SupportedMediaTypes.Add("application/vnd.isaacman.hateoas+json");
-                    systemTextJsonOutputFormatter.SupportedMediaTypes.Add("application/vnd.isaacman.apiroot+json");
+                    newtonsoftJsonOutputFormatter.SupportedMediaTypes.Add("application/vnd.isaacman.hateoas+json");
+                    newtonsoftJsonOutputFormatter.SupportedMediaTypes.Add("application/vnd.isaacman+json");
                 }
 
                 var xmlOutputFormatter = config.OutputFormatters
@@ -149,7 +134,7 @@ namespace BlogApi.Extensions
                 {
                     Endpoint =  "*",
                     Limit = 15,
-                    Period = "5m"
+                    Period = "30m"
                 }
             };
 
@@ -211,8 +196,5 @@ namespace BlogApi.Extensions
 
         public static void AddJwtConfiguration( this IServiceCollection services, IConfiguration configuration) =>
             services.Configure<JwtConfiguration>(configuration.GetSection("JwtSettings"));
-        
-
-
     }
 }

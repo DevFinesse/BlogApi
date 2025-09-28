@@ -3,8 +3,6 @@ using BlogApi.Extensions;
 using Contracts;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.Extensions.Options;
 using NLog;
 using Repository;
 
@@ -13,24 +11,16 @@ using Repository;
 var builder = WebApplication.CreateBuilder(args);
 LogManager.Setup().LoadConfigurationFromFile(string.Concat(Directory.GetCurrentDirectory(), "nlog/config"));
 
-// Register all services in one place
 builder.Services.RegisterApplicationServices(builder.Configuration);
 
 builder.Services.AddControllers(config =>
 {
     config.RespectBrowserAcceptHeader = true;
     config.ReturnHttpNotAcceptable = true;
-    config.InputFormatters.Insert(0, GetJsonPatchInputFormatter());
     config.CacheProfiles.Add("120SecondsDuration", new CacheProfile { Duration = 120 });
-}).AddXmlDataContractSerializerFormatters()
-.AddCustomCSVFormatter()
-    .AddApplicationPart(typeof(BlogApi.Presentation.AssemblyReference).Assembly);
-
-NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter() =>
-    new ServiceCollection().AddLogging().AddMvc().AddNewtonsoftJson()
-    .Services.BuildServiceProvider()
-    .GetRequiredService<IOptions<MvcOptions>>().Value.InputFormatters
-    .OfType<NewtonsoftJsonPatchInputFormatter>().First();
+}).AddNewtonsoftJson()
+  .AddXmlDataContractSerializerFormatters()
+  .AddCustomCSVFormatter();
 
 var app = builder.Build();
 
@@ -48,7 +38,6 @@ catch (Exception ex)
 {
     var migrationLogger = app.Services.GetRequiredService<ILoggerManager>();
     migrationLogger.LogError($"Database migration failed on startup: {ex.Message}");
-    // do not rethrow - service can still start (adjust policy as needed)
 }
 app.UseSwagger();
 app.UseSwaggerUI(s =>
@@ -56,7 +45,6 @@ app.UseSwaggerUI(s =>
     s.SwaggerEndpoint("/swagger/v1/swagger.json", "Isaacman API v1");
 });
 
-// Configure the HTTP request pipeline.
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
     ForwardedHeaders = ForwardedHeaders.All

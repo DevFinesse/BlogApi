@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RQrphLyfJaY=",
+  "dgSpecHash": "zhaJ06wUP/0=",
   "success": true,
   "projectFilePath": "C:\\Users\\BABATUNDE\\source\\repos\\BlogApi\\LoggerService\\LoggerService.csproj",
   "expectedPackageFiles": [
@@ -30,7 +30,10 @@
     "C:\\Users\\BABATUNDE\\.nuget\\packages\\nlog\\6.0.2\\nlog.6.0.2.nupkg.sha512",
     "C:\\Users\\BABATUNDE\\.nuget\\packages\\nlog.extensions.logging\\6.0.2\\nlog.extensions.logging.6.0.2.nupkg.sha512",
     "C:\\Users\\BABATUNDE\\.nuget\\packages\\system.buffers\\4.6.0\\system.buffers.4.6.0.nupkg.sha512",
-    "C:\\Users\\BABATUNDE\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512"
+    "C:\\Users\\BABATUNDE\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "C:\\Users\\BABATUNDE\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.20\\microsoft.netcore.app.ref.8.0.20.nupkg.sha512",
+    "C:\\Users\\BABATUNDE\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.20\\microsoft.windowsdesktop.app.ref.8.0.20.nupkg.sha512",
+    "C:\\Users\\BABATUNDE\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.20\\microsoft.aspnetcore.app.ref.8.0.20.nupkg.sha512"
   ],
   "logs": []
 }

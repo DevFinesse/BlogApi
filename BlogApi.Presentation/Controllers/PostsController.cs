@@ -1,7 +1,6 @@
 ﻿using BlogApi.Presentation.ActionFilters;
 using BlogApi.Presentation.ModelBinders;
 using Entities.LinkModels;
-using Marvin.Cache.Headers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +14,6 @@ namespace BlogApi.Presentation.Controllers
     [Route("api/posts")]
     [ApiController]
     [ApiExplorerSettings(GroupName ="v1")]
-   // [ResponseCache(CacheProfileName = "120SecondsDuration")]
     public class PostsController : ControllerBase
     {
 
@@ -25,17 +23,12 @@ namespace BlogApi.Presentation.Controllers
             _service = serviceManager;
         }
 
-        /// <summary>
-        /// Gets the list of all posts
-        /// </summary>
-        /// <param name="postParameter"></param>
-        /// <returns>The posts list</returns>
-        /// 
+       
 
         [HttpGet(Name = "GetPosts")]
         [HttpHead]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
-        [Authorize(Roles ="Administrator")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetPosts([FromQuery] PostParameter postParameter)
         {
             var linkParams = new LinkParameters(postParameter, HttpContext);
@@ -46,8 +39,6 @@ namespace BlogApi.Presentation.Controllers
         }
 
         [HttpGet("{id:guid}", Name ="PostById")]
-        [HttpCacheExpiration(CacheLocation = CacheLocation.Public, MaxAge = 60)]
-        [HttpCacheValidation(MustRevalidate = false)]
         public async Task<IActionResult> GetPost(Guid id)
         { 
             var post =await _service.PostService.GetPostAsync(id, trackChanges: false);
