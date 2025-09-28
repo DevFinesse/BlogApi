@@ -2,6 +2,8 @@
 
 A feature-rich ASP.NET Core Web API for a blogging platform using layered architecture (Presentation, Service, Repository, Entities, Contracts, Shared). The project follows Repository and Service patterns, AutoMapper, and EF Core with PostgreSQL. Docker and health checks are included.
 
+URL: https://url-shortener.me/5K3A
+
 ## Table of Contents
 - About
 - Architecture
